@@ -3,3 +3,9 @@ html {
     background-size: cover;
     background-image: center;
 }
+
+#form-group {
+    border-radius: 5px;
+    background-color: rgba(60, 60, 60, 0.4);
+    text-decoration-color: white;
+}
