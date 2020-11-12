@@ -16,10 +16,14 @@ So that I can find the best suited hike for me
 
 # Wireframe
 
-# APIs to be used
+# Resources
 Hiking Project - https://www.hikingproject.com/data
-Google Maps API - TBD
+Google Maps API - https://developers.google.com/maps/documentation/directions/overview
 Open Weather -  https://openweathermap.org/api
+MomentJS - 
 Bulma - https://bulma.io/documentation/
+
+# Images
+Background Image by <a href="https://pixabay.com/users/zapculture-17422764/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5649828">Steven Weirather</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5649828">Pixabay</a>
 
 # Breakdown of tasks

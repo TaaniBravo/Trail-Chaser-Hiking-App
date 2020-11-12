@@ -34,3 +34,11 @@ function that geolocates the user and gives them directions to the response hike
 
 function for the weather forecast
 
+Index Team
+Bryan
+Sally
+
+Results Team
+Stanislava
+Taani
+
