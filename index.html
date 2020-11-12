@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <main class="container is-centered">
+    <main class="container is-justify-content-center">
       <section class="column hero">
         <div class="hero-body">
           <div class="container">
@@ -23,7 +23,7 @@
         </div>
       </section>
         <!-- Form Inputs -->
-        <section class="column is-two-thirds-desktop" id="form-group">
+        <section class="column is-two-thirds-desktop is-centered is-vcentered" id="form-group">
             <div class="field has-text-white">
                 <label class="label has-text-white">Where do you wanna go hiking?</label>
                 <div class="control">
@@ -31,21 +31,21 @@
                 </div>
             </div>
 
-            <div class="field">
+            <div class="field is-two-thirds-desktop">
                 <label class="label has-text-white">Search Radius</label>
                 <div class="control">
                   <input class="input" type="text" placeholder="Max: 200">
                 </div>
             </div>
               
-            <div class="field">
+            <div class="field is-two-thirds-desktop">
                 <label class="label has-text-white">Minimum Trail Length</label>
                 <div class="control">
                   <input class="input" type="text">
                 </div>
             </div>
 
-            <div class="field">
+            <div class="field is-two-thirds-desktop">
                 <label class="label has-text-white">When are you looking to go?</label>
                 <div class="control">
                   <input class="input" type="date">
@@ -53,19 +53,21 @@
             </div>
 
             <select name="difficultyInput" id="difficultyInput">
+                <option value="" disabled selected>Select a difficulty</option>
                 <option value="beginner">Beginner</option>
                 <option value="intermediate">Intermediate</option>
                 <option value="advanced">Advanced</option>
             </select>
 
             <select name="ratingInput" id="ratingInput">
+                <option value="" disabled selected>Select a rating</option>
                 <option value="1">1 Star & Up</option>
                 <option value="2">2 Star & Up</option>
                 <option value="3">3 Star & Up</option>
                 <option value="4">4 Star & Up</option>
                 <option value="5">5 Star & Up</option>
             </select>
-          <label class="checkbox">
+          <label class="checkbox has-text-white">
             <input type="checkbox">
             Remember my criteria
           </label>
