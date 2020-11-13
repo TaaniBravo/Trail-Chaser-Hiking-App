@@ -8,6 +8,10 @@ html {
     background-image: center;
 }
 
+h1 {
+    font-stretch: extra-expanded; 
+}
+
 #form-group {
     border-radius: 5px;
     background-color: var(--transparent-bg);
