@@ -27,34 +27,34 @@
     </div>
   </header>
 
-  <main class="columns is-centered">
+  <main class="columns is-desktop is-centered">
     <!-- Form Inputs -->
-    <section class="section is-half-desktop is-centered py-0" id="form-group">
+    <section class="section is-max-desktop is-centered py-0" id="form-group">
       <div class="field has-text-white">
         <label class="label has-text-white">Where do you wanna go hiking?</label>
         <div class="control">
-          <input class="input" type="text" placeholder="Location">
+          <input class="input" type="text" id = "location" placeholder="Location">
         </div>
       </div>
 
       <div class="field is-two-thirds-desktop">
         <label class="label has-text-white">Search Radius</label>
         <div class="control">
-          <input class="input" type="text" placeholder="Max: 200">
+          <input class="input" type="text" id="radius" placeholder="Max: 200">
         </div>
       </div>
 
       <div class="field is-two-thirds-desktop">
         <label class="label has-text-white">Minimum Trail Length</label>
         <div class="control">
-          <input class="input" type="text">
+          <input class="input" id="length" type="text">
         </div>
       </div>
 
       <div class="field is-two-thirds-desktop">
         <label class="label has-text-white">When are you looking to go?</label>
         <div class="control">
-          <input class="input" type="date">
+          <input class="input" id="date" type="date">
         </div>
       </div>
 
@@ -83,17 +83,32 @@
       </div>
     </section>
 
-
-    <!-- Cards -->
-    <section>
-
-    </section>
-
   </main>
+
+  <!-- Cards - image, hike name, and rating-->
+  <section class="container is-max-desktop py-0">
+    <div id="results">
+    <div class="card">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-48x48">
+              <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+            </figure>
+          </div>
+          <div class="media-content">
+            <p class="title is-4">Trail Name</p>
+            <p class="subtitle is-6">Trail Rating</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-  <script src="./assets/script.js"></script>
+  <script src="./assets/indexscript.js"></script>
 </body>
 
 </html>
