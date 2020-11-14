@@ -7,12 +7,14 @@
   <title>Trail Chasers</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/style.css">
 </head>
 
 <body>
 
-  <header class="column hero">
+  <header class="column hero is-centered">
     <div class="hero-body">
       <div class="container">
         <h1 class="title has-text-darker is-size-1" id="tcTitle">
@@ -25,9 +27,9 @@
     </div>
   </header>
 
-  <main class="columns is-centered is-flex is-flex-direction-column">
+  <main class="columns is-centered">
     <!-- Form Inputs -->
-    <section class="section is-half-desktop is-centered" id="form-group">
+    <section class="section is-half-desktop is-centered py-0" id="form-group">
       <div class="field has-text-white">
         <label class="label has-text-white">Where do you wanna go hiking?</label>
         <div class="control">
@@ -75,7 +77,10 @@
         <input type="checkbox">
         Remember my criteria
       </label>
-      <button class="button is-fullwidth is-primary" id="findBtn">Find YOUR Trails!</button>
+
+      <div id="btn-container" class="column mt-3">
+        <button class="button is-fullwidth is-primary" id="findBtn">Find YOUR Trails!</button>
+      </div>
     </section>
 
 
