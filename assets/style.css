@@ -12,9 +12,8 @@ body {
     font-family: 'Indie Flower', cursive;
 }
 
-#form-group {
+#form-group, .tile-group {
     border-radius: 5px;
     background-color: var(--transparent-bg);
-    text-decoration-color: white;
 }
 
