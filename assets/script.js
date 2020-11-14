@@ -1,4 +1,4 @@
-
+$(document).ready(handleweatherinformation)
 
 
 function handleweatherinformation() {
@@ -28,8 +28,15 @@ function appendweatherinfo(response) {
 
 for (let i = 0; i <= 7; i++) {
     
-    
-    
+    var weatherAppend = $(`#weatherinfo${i}`); 
+    var tempF = ( response.daily[i].temp.day - 273.15) * 1.80 +32 
+
+    $("<p>").text( tempF.toFixed(2) + "°F" ).appendTo(weatherAppend);
+
+
+
+    console.log(( response.daily[i].temp.day - 273.15) * 1.80 +32 );
+     
 }
 
 
