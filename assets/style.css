@@ -23,3 +23,8 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     border-radius: 5px;
 }
+
+#map {
+    height: 480px;
+    width: 640px;
+}
