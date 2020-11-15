@@ -17,3 +17,9 @@ body {
     background-color: var(--transparent-bg);
 }
 
+.modal-content {
+    background-color: white;
+    padding: 5px 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5px;
+}

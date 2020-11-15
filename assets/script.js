@@ -1,5 +1,9 @@
 $(document).ready(handleweatherinformation)
 
+function handleModal() {
+  
+}
+
 
 function handleweatherinformation() {
 
