@@ -1,5 +1,3 @@
-const googleAPI = 'AIzaSyBhOGyxS_RiEneLIpqf6mUUIL2HI2sEms4'
-
 $(document).ready(handleweatherinformation)
 
 // This button events apply to the modal and what happens when each of the buttons are clicked.
@@ -11,9 +9,12 @@ $('#failedBtn').on('click', () => {
 
 // Initialize and add the map
 function initMap() {
-  var lat = 47.5518333
-  var long = -122.82669
-  
+  let lat = 47.5518333
+  let long = -122.82669
+
+  // LET these variables provide the directions and the display them.
+  let directionsDisplay = new google.maps.DirectionsRenderer;
+
   // The location of hikeLocation
   const hikeLocation = { lat: lat, lng: long };
   // The map, centered at hikeLocation
@@ -26,6 +27,8 @@ function initMap() {
     position: hikeLocation,
     map: map,
   });
+
+  directionsDisplay.setMap(map)
 }
 
 function handleGeoLocation() {
@@ -40,10 +43,12 @@ function handleGeoLocation() {
   }
 }
 
-function handleMap(position) {
+function handleMap(position, destination) {
+  const googleAPI = 'AIzaSyBhOGyxS_RiEneLIpqf6mUUIL2HI2sEms4'
+  // LET these variables be equal to the user's latitude and longitude
   let userLatitude = position.coords.latitude
   let userLongitude = position.coords.longitude
-
+  let directionsService = new google.maps.DirectionsService;
   // First we need to turn the geolocation of the user into a valid address for Google to use.
   const reverseGeoURL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${userLatitude},${userLongitude}&key=${googleAPI}`
 
@@ -52,18 +57,28 @@ function handleMap(position) {
     method: 'GET'
   }).then(function (response) {
     let placeID = response.results[8].place_id
-    var lat = 45.7581747
-    var long = -121.5425736
+    let lat = 47.5518333
+    let long = -122.82669
+    let destination = new google.maps.LatLng(lat, long);
 
-    const directionsURL = `https://maps.googleapis.com/maps/api/directions/json?origin=${placeID}&destination=${lat},${long}&key=${googleAPI}`
+    // const directionsURL = `https://maps.googleapis.com/maps/api/directions/json?origin=${placeID}&destination=${lat},${long}&key=${googleAPI}`
 
-    $.ajax({
-      url: directionsURL,
-      method: 'GET'
-    }).then(function (response) {
-      console.log(response)
+    // $.ajax({
+    //   url: directionsURL,
+    //   method: 'GET'
+    // }).then(function (response) {
+    //   console.log(response)
+    // })
+    let request = {
+      origin: placeID,
+      destination: destination,
+      travelMode: "DRIVING"
+    }
+    directionsService.route(request, function (response, status) {
+      if (status === 'OK') {
+        directionsDisplay.setDirections(response);
+      }
     })
-
   })
 
 }
