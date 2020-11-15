@@ -1,13 +1,34 @@
 $(document).ready(handleweatherinformation)
 
 // This button events apply to the modal and what happens when each of the buttons are clicked.
-$('.yesBtn').on('click', handleGeoLocation)
+$('#yesBtn').on('click', handleGeoLocation)
+// On btn click the modal closes.
 $('#noBtn').on('click', () => {
-  $('.modal').removeclass('is-active')
+  $('.modal').removeClass('is-active')
 })
 
 function handleGeoLocation() {
-  $('.modal').removeclass('is-active')
+  // On btn click the modal closes.
+  $('.modal').removeClass('is-active')
+  // THEN we pull the geo location
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(handleMap, failedToLocate)
+  }
+  else {
+    return;
+  }
+}
+
+function failedToLocate() {
+
+}
+
+function handleMap(position) {
+
+  let userLatitude = position.coords.latitude
+  let userLongitude = position.coords.longitude
+  console.log(position.coords.latitude)
+  console.log(position.coords.longitude)
 }
 
 
