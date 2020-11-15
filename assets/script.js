@@ -1,3 +1,5 @@
+const googleAPI = 'AIzaSyBhOGyxS_RiEneLIpqf6mUUIL2HI2sEms4'
+
 $(document).ready(handleweatherinformation)
 
 // This button events apply to the modal and what happens when each of the buttons are clicked.
@@ -9,13 +11,14 @@ $('#failedBtn').on('click', () => {
 
 // Initialize and add the map
 function initMap() {
-  var lat = 45.7581747
-  var long = -121.5425736
+  var lat = 47.5518333
+  var long = -122.82669
+  
   // The location of hikeLocation
   const hikeLocation = { lat: lat, lng: long };
   // The map, centered at hikeLocation
   const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 4,
+    zoom: 8,
     center: hikeLocation,
   });
   // The marker, positioned at hikeLocation
@@ -38,7 +41,6 @@ function handleGeoLocation() {
 }
 
 function handleMap(position) {
-  let googleAPI = 'AIzaSyBhOGyxS_RiEneLIpqf6mUUIL2HI2sEms4'
   let userLatitude = position.coords.latitude
   let userLongitude = position.coords.longitude
 
