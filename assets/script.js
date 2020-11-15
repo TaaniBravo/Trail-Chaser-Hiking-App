@@ -1,7 +1,13 @@
 $(document).ready(handleweatherinformation)
 
-function handleModal() {
-  
+// This button events apply to the modal and what happens when each of the buttons are clicked.
+$('.yesBtn').on('click', handleGeoLocation)
+$('#noBtn').on('click', () => {
+  $('.modal').removeclass('is-active')
+})
+
+function handleGeoLocation() {
+  $('.modal').removeclass('is-active')
 }
 
 
