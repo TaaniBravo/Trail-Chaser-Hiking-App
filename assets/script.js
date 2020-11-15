@@ -32,7 +32,22 @@ function handleMap(position) {
   // First we need to turn the geolocation of the user into a valid address for Google to use.
   const reverseGeoURL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${userLatitude},${userLongitude}&key=${googleAPI}`
 
-  console.log(reverseGeoURL)
+  $.ajax({
+    url: reverseGeoURL,
+    method: 'GET'
+  }).then(function(response){
+    let placeID = response.results[8].place_id
+    var lat = 45.7581747
+    var long = -121.5425736
+
+    const directionsURL = `https://maps.googleapis.com/maps/api/directions/json?origin=${placeID}&destination=${lat},${long}&key=${googleAPI}`
+
+    $.ajax({
+      url: directionsURL,
+      method: 'GET'
+    }).then(function(response){
+
+  })
 
 }
 
