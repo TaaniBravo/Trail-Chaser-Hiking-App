@@ -1,10 +1,10 @@
 $(document).ready(handleweatherinformation)
 
 // This button events apply to the modal and what happens when each of the buttons are clicked.
-$('#yesBtn').on('click', handleGeoLocation)
+$('#closeBtn').on('click', handleGeoLocation)
 // On btn click the modal closes.
-$('#noBtn').on('click', () => {
-  $('.modal').removeClass('is-active')
+$('#failedBtn').on('click', () => {
+  $('#failedModal').removeClass('is-active')
 })
 
 function handleGeoLocation() {
@@ -12,23 +12,28 @@ function handleGeoLocation() {
   $('.modal').removeClass('is-active')
   // THEN we pull the geo location
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(handleMap, failedToLocate)
+    navigator.geolocation.getCurrentPosition(handleMap)
   }
   else {
     return;
   }
 }
 
-function failedToLocate() {
+// function failedToLocate() {
+//   $('#failedModal').addClass('is-active')
 
-}
+// }
 
 function handleMap(position) {
-
+  let googleAPI = 'AIzaSyBhOGyxS_RiEneLIpqf6mUUIL2HI2sEms4'
   let userLatitude = position.coords.latitude
   let userLongitude = position.coords.longitude
-  console.log(position.coords.latitude)
-  console.log(position.coords.longitude)
+
+  // First we need to turn the geolocation of the user into a valid address for Google to use.
+  const reverseGeoURL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${userLatitude},${userLongitude}&key=${googleAPI}`
+
+  console.log(reverseGeoURL)
+
 }
 
 
