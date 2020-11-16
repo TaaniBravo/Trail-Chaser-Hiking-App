@@ -18,6 +18,7 @@ function handleUserInfo() {
 
     let checkSaveCriteria = document.getElementById('checkboxChecker').checked;
 
+    // I Created this variable just to see if my if statement was working.
     var taylorSwift = "We're all Taylor Swift fans here!";
 
     console.log(locationInput);
@@ -41,6 +42,8 @@ function handleUserInfo() {
         //var difficultyInput = $("#difficultyInput").val();
         //var starInput = $("#ratingInput").val();
 
+        var userData = [locationInput, radiusInput, lengthInput, dateInput, difficultyInput, starInput]
+            console.log(userData);
         //localStorage.setItem("location", locationInput);
         //localStorage.setItem("radius", radiusInput);
         //localStorage.setItem("length", lengthInput);
@@ -60,6 +63,14 @@ function handleUserInfo() {
                 //localStorage.setItem(key, input.value);
             //});
         //}
+        //function handleStorage() {
+            
+            //e.preventDefault();
+
+            //var userData = document.getElementById('form-group').serializeArray();
+            //console.log(userData);
+        //};
+
         console.log(taylorSwift);
 
 
