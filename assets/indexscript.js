@@ -4,7 +4,7 @@ var apiID = "200970639-981a2550ac3c48f2579397ecf3a9b65e";
 var queryURL;
 
 // handleUserInfo - get user inputs
-function handleUserInfo () {
+function handleUserInfo() {
     // get inputs
     var locationInput = $("#location").val();
     // TO DO - do some checks to make sure a place was already exits
@@ -15,9 +15,10 @@ function handleUserInfo () {
     var difficultyInput = $("#difficultyInput").val();
     var starInput = $("#ratingInput").val();
     // TO DO - collect click from "remember my criteria" checkbox
-    
+
     let checkSaveCriteria = document.getElementById('checkboxChecker').checked;
-    
+
+    var taylorSwift = "We're all Taylor Swift fans here!";
 
     console.log(locationInput);
     console.log(radiusInput);
@@ -32,19 +33,56 @@ function handleUserInfo () {
     handleSearch();
 
     // display results
+    if (checkSaveCriteria = true) {
+        //var locationInput = $("#location").val();
+        //var radiusInput = $("#radius").val();
+        //var lengthInput = $("#length").val();
+        //var dateInput = $("#date").val();
+        //var difficultyInput = $("#difficultyInput").val();
+        //var starInput = $("#ratingInput").val();
+
+        //localStorage.setItem("location", locationInput);
+        //localStorage.setItem("radius", radiusInput);
+        //localStorage.setItem("length", lengthInput);
+        //localStorage.setItem("date", dateInput);
+        //localStorage.setItem("difficultyInput", difficultyInput);
+        //localStorage.setItem("ratingInput", starInput);
+
+        //function persistInput(input) {
+            //var key = "input-" + input.id;
+
+            //var storedValue = localStorage.getItem(key);
+
+            //if (storedValue)
+                //input.value = storedValue;
+
+            //input.addEventListener('input', function () {
+                //localStorage.setItem(key, input.value);
+            //});
+        //}
+        console.log(taylorSwift);
+
+
+
+    }
+    else {
+        console.log(checkSaveCriteria);
+    };
+
+
 }
 
 // handleSearch - make ajax call and get response info for hikes to appear
 // TO DO - update the query URL with input from handleUserInfo
 function handleSearch() {
     queryURL = `https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=${apiID}`;
-      // Perfoming an AJAX GET request to our queryURL
-      $.ajax({
+    // Perfoming an AJAX GET request to our queryURL
+    $.ajax({
         url: queryURL,
         method: "GET"
-      })
-      // After the data from the AJAX request comes back
-        .then(function(response) {
+    })
+        // After the data from the AJAX request comes back
+        .then(function (response) {
             // console.log(response);
             handleResults(response);
         });
@@ -68,31 +106,11 @@ function handleResults(response) {
 // TO DO - create listener for when user clicks on search result
 
 // TO DO - create function to save search criteria if user clicks checkbox
-//var checkBoxInput = $("#checkbox").val();
-//console.log(checkBoxInput); h5
-//var checkBoxInput = document.getElementsByClassName('checkbox');
-//console.log(checkBoxInput);
- 
-//document.getElementById('checkboxChecker').value = "checkedOrUnchecked"
-
-//let btnSaveCriteria = document.getElementById('checkboxChecker').value;
 
 
- //if (btnSaveCriteria === on) {
-
-     //btnSaveCriteria.addEventListener("change", function(e) {
-         //console.log(btnSaveCriteria);
-    // });
- //};
-
- 
-    //btnSaveCriteria.hidden = this.checked ? false : true;
-    //console.log(btnSaveCriteria);
-//});
- 
 
 //if ("box is checked") {
- //store my criteria checked
+//store my criteria checked
 //}
 // function handleStorage() {}
 
