@@ -15,6 +15,9 @@ function handleUserInfo () {
     var difficultyInput = $("#difficultyInput").val();
     var starInput = $("#ratingInput").val();
     // TO DO - collect click from "remember my criteria" checkbox
+    
+    let btnSaveCriteria = document.getElementById('checkboxChecker').checked;
+    
 
     console.log(locationInput);
     console.log(radiusInput);
@@ -22,6 +25,8 @@ function handleUserInfo () {
     console.log(dateInput);
     console.log(difficultyInput);
     console.log(starInput);
+
+    console.log(btnSaveCriteria);
 
     // make ajax call
     handleSearch();
@@ -63,6 +68,32 @@ function handleResults(response) {
 // TO DO - create listener for when user clicks on search result
 
 // TO DO - create function to save search criteria if user clicks checkbox
+//var checkBoxInput = $("#checkbox").val();
+//console.log(checkBoxInput); h5
+//var checkBoxInput = document.getElementsByClassName('checkbox');
+//console.log(checkBoxInput);
+ 
+//document.getElementById('checkboxChecker').value = "checkedOrUnchecked"
+
+//let btnSaveCriteria = document.getElementById('checkboxChecker').value;
+
+
+ //if (btnSaveCriteria === on) {
+
+     //btnSaveCriteria.addEventListener("change", function(e) {
+         //console.log(btnSaveCriteria);
+    // });
+ //};
+
+ 
+    //btnSaveCriteria.hidden = this.checked ? false : true;
+    //console.log(btnSaveCriteria);
+//});
+ 
+
+//if ("box is checked") {
+ //store my criteria checked
+//}
 // function handleStorage() {}
 
 
