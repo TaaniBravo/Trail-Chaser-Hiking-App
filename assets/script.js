@@ -27,7 +27,7 @@ function initMap() {
     zoom: 8,
     center: hikeLocation,
   });
-  directionsRenderer.setMap(map)
+  
   // The marker, positioned at hikeLocation
   const marker = new google.maps.Marker({
     position: hikeLocation,
@@ -72,8 +72,12 @@ function handleUserAddress(position) {
 function calcRoute(userAddress) {
 
   let destination = new google.maps.LatLng(47.5518333, -122.82669);
-  let directionsService = new google.maps.DirectionsService
-  let directionsRenderer = new google.maps.DirectionsRenderer
+  let directionsService = new google.maps.DirectionsService()
+  let directionsRenderer = new google.maps.DirectionsRenderer()
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 8,
+    center: destination,
+  });
 
   let request = {
     origin: userAddress,
@@ -81,10 +85,10 @@ function calcRoute(userAddress) {
     travelMode: "DRIVING"
   }
 
-  console.log(request)
   directionsService.route(request, function(result, status) {
-    console.log(result)
+
     if (status == 'OK') {
+      directionsRenderer.setMap(map)
       directionsRenderer.setDirections(result);
     }
   });
