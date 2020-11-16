@@ -16,7 +16,7 @@ function handleUserInfo () {
     var starInput = $("#ratingInput").val();
     // TO DO - collect click from "remember my criteria" checkbox
     
-    let btnSaveCriteria = document.getElementById('checkboxChecker').checked;
+    let checkSaveCriteria = document.getElementById('checkboxChecker').checked;
     
 
     console.log(locationInput);
@@ -26,7 +26,7 @@ function handleUserInfo () {
     console.log(difficultyInput);
     console.log(starInput);
 
-    console.log(btnSaveCriteria);
+    console.log(checkSaveCriteria);
 
     // make ajax call
     handleSearch();
