@@ -64,13 +64,11 @@ function handleUserInfo() {
             ratingInput: starInput
         };
 
-        savedCriteria.push(userData)
+        //savedCriteria.push(userData)
 
         //$.each(userData, function (i, index) {
         //localStorage.setItem(key, value);
         //});
-
-    
 
         localStorage.setItem("savedCriteria", JSON.stringify(savedCriteria));
         //function that appends info into form
