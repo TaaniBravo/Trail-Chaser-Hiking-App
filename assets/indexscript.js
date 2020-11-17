@@ -4,22 +4,27 @@ var apiID = "200970639-981a2550ac3c48f2579397ecf3a9b65e";
 var queryURL;
 var resultsEl = $("#results");
 var hikesReturned;
-var hikeSelected; // global variable for passing to the results
+var hikeSelected; 
+var locationInput;
+var radiusInput;
+var lengthInput;
+var dateInput;
+var difficultyInput;
+var starInput;
 
 var savedCriteria = JSON.parse(localStorage.getItem("savedCriteria")) || [];
 
 // handleUserInfo - get user inputs
 function handleUserInfo() {
     // get inputs
-    var locationInput = $("#location").val();
+    locationInput = $("#location").val();
     // TO DO - do some checks to make sure a place was already exits
-    var radiusInput = $("#radius").val();
+    radiusInput = $("#radius").val();
     // TO DO - check radius and length are actual numbers
-    var lengthInput = $("#length").val();
-    var dateInput = $("#date").val();
-    var difficultyInput = $("#difficultyInput").val();
-    var starInput = $("#ratingInput").val();
-    // TO DO - collect click from "remember my criteria" checkbox
+    lengthInput = $("#length").val();
+    dateInput = $("#date").val();
+    difficultyInput = $("#difficultyInput").val();
+    starInput = $("#ratingInput").val();
 
     let checkSaveCriteria = document.getElementById('checkboxChecker').checked;
 
@@ -91,7 +96,16 @@ function handleUserInfo() {
 // handleSearch - make ajax call and get response info for hikes to appear
 // TO DO - update the query URL with input from handleUserInfo
 function handleSearch() {
-    queryURL = `https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=${apiID}`;
+
+    // get lat and lon for city; placeholders for now
+    var lat = 47.6062;
+    var lon = -122.3321;
+    // TO DO - there is no difficulty input parameter
+
+    // queryURL = `https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lon}&maxDistance=100&key=${apiID}`;
+
+    queryURL = `https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lon}&maxDistance=${radiusInput}&minLength=${lengthInput}&minStars=${starInput}&key=${apiID}`;
+    console.log(queryURL);
     // Perfoming an AJAX GET request to our queryURL
     $.ajax({
         url: queryURL,
@@ -99,7 +113,7 @@ function handleSearch() {
     })
         // After the data from the AJAX request comes back
         .then(function (response) {
-            // console.log(response);
+            console.log(response);
             handleResults(response);
         });
 }
@@ -108,7 +122,7 @@ function handleSearch() {
 function handleResults(response) {
     // console.log(response);
     hikesReturned = response.trails; // store for use when user clicks selection
-    console.log(hikesReturned)
+    // console.log(hikesReturned)
     resultsEl.empty(); // clearresults section
     for (var i = 0; i < 5; i++) {
         // console.log(response.trails[i]);
@@ -135,10 +149,10 @@ function handleResults(response) {
 
 // TO DO - create listener for when user clicks on search result
 $("#results").on("click", ".card", function() {
-    console.log("you clicked a hike!" + $(this).attr('id'));
+    // console.log("you clicked a hike!" + $(this).attr('id'));
     hikeSelected = hikesReturned[$(this).attr('id')];
     // use hikeSelected in script.js
-    console.log(hikeSelected);
+    // console.log(hikeSelected);
     localStorage.setItem("hikeSelected", JSON.stringify(hikeSelected));
     window.location.href = "results.html";
 });
