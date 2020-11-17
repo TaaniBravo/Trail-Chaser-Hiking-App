@@ -1,7 +1,7 @@
 const hikeSelected = JSON.parse(localStorage.getItem('hikeSelected'))
 
 $(document).ready(handleWeatherInfo)
-
+$(document).ready(handlenameanddescription)
 // This button events apply to the modal and what happens when each of the buttons are clicked.
 $('#closeBtn').on('click', handleGeoLocation)
 
@@ -90,9 +90,10 @@ function calcRoute(userAddress) {
 function handleWeatherInfo() {
 
   var APIKey = "52aa85fe9180c06fe869a1a3e7d7de19"
-  var lat = 45.7581747
+  var lat = hikeSelected.latitude
 
-  var long = -121.5425736
+  var long = hikeSelected.longitude
+
   var queryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&appid=" + APIKey;
 
 
@@ -101,6 +102,8 @@ function handleWeatherInfo() {
     url: queryURL,
     method: "GET"
   }).then(function (response) {
+
+     console.log(response)
 
     appendweatherinfo(response)
   })
@@ -113,11 +116,21 @@ function appendweatherinfo(response) {
     var weatherAppend = $(`#weatherinfo${i}`);
     var tempF = (response.daily[i].temp.day - 273.15) * 1.80 + 32
 
+    $(`#weathericon${i}`).attr('src', `https://openweathermap.org/img/wn/${response.daily[i].weather[0].icon}.png`);
+    console.log(response.daily[i].weather[0].icon)
     $("<p>").text(tempF.toFixed(2) + "°F").appendTo(weatherAppend);
 
   }
 
 
+
+}
+
+function handlenameanddescription () {
+
+$("#hikeName").text(hikeSelected.name)
+$("#difficulty").text(hikeSelected.difficulty)
+$("#description").text(hikeSelected.summary)
 
 }
 
