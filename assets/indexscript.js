@@ -11,6 +11,8 @@ var lengthInput;
 var dateInput;
 var difficultyInput;
 var starInput;
+var lat;
+var lon;
 
 var savedCriteria = JSON.parse(localStorage.getItem("savedCriteria")) || [];
 
@@ -41,7 +43,8 @@ function handleUserInfo() {
     console.log(checkSaveCriteria);
 
     // make ajax call
-    handleSearch();
+    handleCity();
+    // handleSearch();
 
     // display results
     if (checkSaveCriteria === true) {
@@ -97,12 +100,7 @@ function handleUserInfo() {
 // TO DO - update the query URL with input from handleUserInfo
 function handleSearch() {
 
-    // get lat and lon for city; placeholders for now
-    var lat = 47.6062;
-    var lon = -122.3321;
     // TO DO - there is no difficulty input parameter
-
-    // queryURL = `https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lon}&maxDistance=100&key=${apiID}`;
 
     queryURL = `https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lon}&maxDistance=${radiusInput}&minLength=${lengthInput}&minStars=${starInput}&key=${apiID}`;
     console.log(queryURL);
@@ -146,6 +144,24 @@ function handleResults(response) {
     }
 
 }
+
+
+function handleCity() {
+    const googleAPI = 'AIzaSyBhOGyxS_RiEneLIpqf6mUUIL2HI2sEms4'
+  
+    // First we need to turn the geolocation of the user into a valid address for Google to use.
+    const geocodeURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${locationInput}&key=${googleAPI}`
+  
+    $.ajax({
+      url: geocodeURL,
+      method: 'GET'
+    }).then(function (response) {
+      lat = response.results[0].geometry.location.lat;
+      lon = response.results[0].geometry.location.lng;
+      console.log(lat, lon)
+      handleSearch();
+    }) // catch a 404!
+  }
 
 // TO DO - create listener for when user clicks on search result
 $("#results").on("click", ".card", function() {
