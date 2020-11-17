@@ -6,15 +6,26 @@ html {
     background-image: url(./images/mountaineers-5649828.jpg);
     background-size: cover;
     background-image: center;
+    background-attachment: fixed;
 }
 
 body {
     font-family: 'Indie Flower', cursive;
 }
 
-#form-group {
+#form-group, .tile-group {
     border-radius: 5px;
     background-color: var(--transparent-bg);
-    text-decoration-color: white;
 }
 
+.modal-content {
+    background-color: white;
+    padding: 5px 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5px;
+}
+
+#map {
+    height: 360px;
+    width: 480px;
+}
