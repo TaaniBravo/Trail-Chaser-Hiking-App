@@ -1,24 +1,12 @@
-// DECLARE VARIABLES
-let directionsRenderer;
-let directionsService;
-let map;
-
 $(document).ready(handleWeatherInfo)
 
 // This button events apply to the modal and what happens when each of the buttons are clicked.
 $('#closeBtn').on('click', handleGeoLocation)
-// On btn click the modal closes.
-$('#failedBtn').on('click', () => {
-  $('#failedModal').removeClass('is-active')
-})
 
 // Initialize and add the map
 function initMap() {
   let lat = 47.5518333
   let long = -122.82669
-
-  let directionsService = new google.maps.DirectionsService;
-  let directionsRenderer = new google.maps.DirectionsRenderer;
 
   // The location of hikeLocation
   const hikeLocation = { lat: lat, lng: long };
@@ -33,7 +21,6 @@ function initMap() {
     position: hikeLocation,
     map: map,
   });
-
  
 }
 
@@ -71,9 +58,13 @@ function handleUserAddress(position) {
 
 function calcRoute(userAddress) {
 
+  // LET the destination be EQUAL to this new Latitude and Longitude.
   let destination = new google.maps.LatLng(47.5518333, -122.82669);
-  let directionsService = new google.maps.DirectionsService()
-  let directionsRenderer = new google.maps.DirectionsRenderer()
+  // Variables that will create new directions and renderer them to the map for us.
+  let directionsService = new google.maps.DirectionsService();
+  let directionsRenderer = new google.maps.DirectionsRenderer();
+
+  // THEN we are going to create a new map so that we can get our route displayed out of the scope of the initMap function.
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 8,
     center: destination,
