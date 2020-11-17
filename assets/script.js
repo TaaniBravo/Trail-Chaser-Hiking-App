@@ -128,7 +128,9 @@ function appendweatherinfo(response) {
 
 function handlenameanddescription () {
 
-
+$("#hikeName").text(hikeSelected.name)
+$("#difficulty").text(hikeSelected.difficulty)
+$("#description").text(hikeSelected.summary)
 
 }
 
