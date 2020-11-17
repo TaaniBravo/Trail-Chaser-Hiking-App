@@ -2,6 +2,9 @@
 // VARIABLES
 var apiID = "200970639-981a2550ac3c48f2579397ecf3a9b65e";
 var queryURL;
+var resultsEl = $("#results");
+var hikesReturned;
+var hikeSelected;
 
 var savedCriteria = JSON.parse(localStorage.getItem("savedCriteria")) || [];
 
@@ -104,19 +107,39 @@ function handleSearch() {
 // handleResults - display results of first 5 results in card form
 function handleResults(response) {
     // console.log(response);
-    $("#results").empty();
+    hikesReturned = response.trails; // store for use when user clicks selection
+    console.log(hikesReturned)
+    resultsEl.empty(); // clearresults section
     for (var i = 0; i < 5; i++) {
         // console.log(response.trails[i]);
-        $("#results").append(response.trails[i].name);
-        $("#results").append("<br>");
-        console.log(response.trails[i].name);
-        console.log(response.trails[i].imgSqSmall);
-        console.log(response.trails[i].stars);
+        // create a card with info
+        var card = `<div class="card" id="${i}">
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image is-48x48">
+                                    <img src="${response.trails[i].imgSqSmall}" alt="Placeholder image">
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-4">${response.trails[i].name}</p>
+                                    <p class="subtitle is-6">${response.trails[i].stars}</p>
+                                </div> 
+                            </div> 
+                        </div> 
+                    </div>`;
+        resultsEl.append(card);
     }
 
 }
 
 // TO DO - create listener for when user clicks on search result
+$("#results").on("click", ".card", function() {
+    console.log("you clicked a hike!" + $(this).attr('id'));
+    hikeSelected = hikesReturned[$(this).attr('id')];
+    // use hikeSelected in script.js
+    console.log(hikeSelected.name);
+});
 
 // TO DO - create function to save search criteria if user clicks checkbox
 
