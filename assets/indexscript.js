@@ -4,7 +4,7 @@ var apiID = "200970639-981a2550ac3c48f2579397ecf3a9b65e";
 var queryURL;
 var resultsEl = $("#results");
 var hikesReturned;
-var hikeSelected; 
+// var hikeSelected; 
 var locationInput;
 var radiusInput;
 var lengthInput;

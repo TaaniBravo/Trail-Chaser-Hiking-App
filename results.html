@@ -31,7 +31,7 @@
         <h1 class="title has-text-darker is-size-1" id="tcTitle"><a href="./index.html">
             <i class="fas fa-hiking"></i> Trail Chasers</a>
         </h1>
-        <h2 class="subtitle">
+        <h2 class="subtitle is-size-4">
           Your new hiking buddy!
         </h2>
       </div>
@@ -41,33 +41,34 @@
 
     <div class="tile is-ancestor has-text-white">
 
-      <div class="tile is-vertical is-8">
+      <div class="tile is-vertical is-12">
         <div class="tile">
           <div class="tile is-parent is-vertical">
 
             <article class="tile is-child notification tile-group">
-              <p id="hikeName" class="title"></p>
-              <p id="difficulty" class="subtitle"></p>
+              <p id="hikeName" class="title has-text-primary"></p>
+              <p id="difficulty" class="subtitle is-size-4"></p>
             </article>
 
             <article class="tile is-child notification tile-group">
-              <p class="title">Description</p>
-              <p id="description" class="subtitle"></p>
+              <p class="title has-text-primary">Description</p>
+              <p id="description" class="subtitle is-size-4"></p>
             </article>
 
           </div>
 
-          <div class="tile is-parent">
+          <!-- <div class="tile is-parent">
             <article class="tile is-child notification tile-group">
               <p class="title">Map</p>
               <div id="map"></div>
             </article>
-          </div>
+          </div> -->
 
         </div>
+
         <div class="tile is-parent">
           <article class="tile is-child notification tile-group">
-            <p class="title">Weather Forecast</p>
+            <p class="title has-text-primary">Weather Forecast</p>
 
             <div class="columns">
 
@@ -176,6 +177,17 @@
                 </div>
               </div>
 
+            </div>
+          </article>
+        </div>
+
+        <div class="tile is-parent">
+          <article class="tile is-child tile-group">
+            <div class="tile is-parent">
+              <article class="tile is-child notification tile-group">
+                <p class="title">Map</p>
+                <div id="map"></div>
+              </article>
             </div>
           </article>
         </div>

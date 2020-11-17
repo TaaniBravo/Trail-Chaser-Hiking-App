@@ -118,7 +118,7 @@ function appendweatherinfo(response) {
 
     $(`#weathericon${i}`).attr('src', `https://openweathermap.org/img/wn/${response.daily[i].weather[0].icon}.png`);
     console.log(response.daily[i].weather[0].icon)
-    $("<p>").text(tempF.toFixed(2) + "°F").appendTo(weatherAppend);
+    $("<p>").text('Temp: ' + tempF.toFixed(2) + "°F").appendTo(weatherAppend).addClass('is-size-4');
 
   }
 

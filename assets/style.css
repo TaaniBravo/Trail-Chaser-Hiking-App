@@ -35,3 +35,14 @@ body {
     bottom: 0;
     border-radius: 5px;
 }
+
+#weathericon0,
+#weathericon1,
+#weathericon2,
+#weathericon3,
+#weathericon4,
+#weathericon5,
+#weathericon6 {
+    background-color: hsl(141, 53%, 31%);
+    border-radius: 5px;
+}
