@@ -1,3 +1,5 @@
+const hikeSelected = JSON.parse(localStorage.getItem('hikeSelected'))
+
 $(document).ready(handleWeatherInfo)
 
 // This button events apply to the modal and what happens when each of the buttons are clicked.
