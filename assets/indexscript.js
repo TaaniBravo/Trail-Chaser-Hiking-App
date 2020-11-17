@@ -4,7 +4,7 @@ var apiID = "200970639-981a2550ac3c48f2579397ecf3a9b65e";
 var queryURL;
 var resultsEl = $("#results");
 var hikesReturned;
-var hikeSelected;
+var hikeSelected; // global variable for passing to the results
 
 var savedCriteria = JSON.parse(localStorage.getItem("savedCriteria")) || [];
 
@@ -138,7 +138,9 @@ $("#results").on("click", ".card", function() {
     console.log("you clicked a hike!" + $(this).attr('id'));
     hikeSelected = hikesReturned[$(this).attr('id')];
     // use hikeSelected in script.js
-    console.log(hikeSelected.name);
+    console.log(hikeSelected);
+    localStorage.setItem("hikeSelected", JSON.stringify(hikeSelected));
+    window.location.href = "results.html";
 });
 
 // TO DO - create function to save search criteria if user clicks checkbox
