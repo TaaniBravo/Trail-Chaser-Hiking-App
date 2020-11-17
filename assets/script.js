@@ -5,6 +5,9 @@ $(document).ready(handlenameanddescription)
 // This button events apply to the modal and what happens when each of the buttons are clicked.
 $('#closeBtn').on('click', handleGeoLocation)
 
+window.addEventListener('resize', 
+	() => map.getViewPort().resize());
+
 // Initialize and add the map
 function initMap() {
   let lat = 47.5518333
