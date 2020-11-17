@@ -116,7 +116,7 @@ function appendweatherinfo(response) {
     var weatherAppend = $(`#weatherinfo${i}`);
     var tempF = (response.daily[i].temp.day - 273.15) * 1.80 + 32
 
-    $(`#weathericon${i}`).attr('src', `https://openweathermap.org/img/wn/${response.daily[i].weather[0].icon}.png`);
+    $(`#weathericon${i}`).attr('src', `https://openweathermap.org/img/wn/${response.daily[i].weather[0].icon}@2x.png`);
     console.log(response.daily[i].weather[0].icon)
     $("<p>").text('Temp: ' + tempF.toFixed(2) + "°F").appendTo(weatherAppend).addClass('is-size-4');
 
