@@ -4,7 +4,11 @@ var apiID = "200970639-981a2550ac3c48f2579397ecf3a9b65e";
 var queryURL;
 var resultsEl = $("#results");
 var hikesReturned;
+<<<<<<< HEAD
 // var hikeSelected; 
+=======
+var userHikeSelected; 
+>>>>>>> ac2dc8cec51a7a720c0ac6195fd117084881a774
 var locationInput;
 var radiusInput;
 var lengthInput;
@@ -164,10 +168,10 @@ function handleCity() {
 // TO DO - create listener for when user clicks on search result
 $("#results").on("click", ".card", function() {
     // console.log("you clicked a hike!" + $(this).attr('id'));
-    hikeSelected = hikesReturned[$(this).attr('id')];
-    // use hikeSelected in script.js
-    // console.log(hikeSelected);
-    localStorage.setItem("hikeSelected", JSON.stringify(hikeSelected));
+    userHikeSelected = hikesReturned[$(this).attr('id')];
+    // use userHikeSelected in script.js
+    // console.log(userHikeSelected);
+    localStorage.setItem("hikeSelected", JSON.stringify(userHikeSelected));
     window.location.href = "results.html";
 });
 
