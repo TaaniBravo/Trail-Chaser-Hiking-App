@@ -3,6 +3,8 @@
 var apiID = "200970639-981a2550ac3c48f2579397ecf3a9b65e";
 var queryURL;
 var resultsEl = $("#results");
+var hikesReturned;
+var hikeSelected;
 
 // handleUserInfo - get user inputs
 function handleUserInfo () {
@@ -49,11 +51,13 @@ function handleSearch() {
 // handleResults - display results of first 5 results in card form
 function handleResults(response) {
     // console.log(response);
+    hikesReturned = response.trails; // store for use when user clicks selection
+    console.log(hikesReturned)
     resultsEl.empty(); // clearresults section
     for (var i = 0; i < 5; i++) {
         // console.log(response.trails[i]);
         // create a card with info
-        var card = `<div class="card" id="${response.trails[i].name}">
+        var card = `<div class="card" id="${i}">
                         <div class="card-content">
                             <div class="media">
                                 <div class="media-left">
@@ -76,6 +80,9 @@ function handleResults(response) {
 // TO DO - create listener for when user clicks on search result
 $("#results").on("click", ".card", function() {
     console.log("you clicked a hike!" + $(this).attr('id'));
+    hikeSelected = hikesReturned[$(this).attr('id')];
+    // use hikeSelected in script.js
+    console.log(hikeSelected.name);
 });
 
 // TO DO - create function to save search criteria if user clicks checkbox
