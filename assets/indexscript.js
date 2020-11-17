@@ -4,22 +4,29 @@ var apiID = "200970639-981a2550ac3c48f2579397ecf3a9b65e";
 var queryURL;
 var resultsEl = $("#results");
 var hikesReturned;
-var hikeSelected; // global variable for passing to the results
+var hikeSelected; 
+var locationInput;
+var radiusInput;
+var lengthInput;
+var dateInput;
+var difficultyInput;
+var starInput;
+var lat;
+var lon;
 
 var savedCriteria = JSON.parse(localStorage.getItem("savedCriteria")) || [];
 
 // handleUserInfo - get user inputs
 function handleUserInfo() {
     // get inputs
-    var locationInput = $("#location").val();
+    locationInput = $("#location").val();
     // TO DO - do some checks to make sure a place was already exits
-    var radiusInput = $("#radius").val();
+    radiusInput = $("#radius").val();
     // TO DO - check radius and length are actual numbers
-    var lengthInput = $("#length").val();
-    var dateInput = $("#date").val();
-    var difficultyInput = $("#difficultyInput").val();
-    var starInput = $("#ratingInput").val();
-    // TO DO - collect click from "remember my criteria" checkbox
+    lengthInput = $("#length").val();
+    dateInput = $("#date").val();
+    difficultyInput = $("#difficultyInput").val();
+    starInput = $("#ratingInput").val();
 
     let checkSaveCriteria = document.getElementById('checkboxChecker').checked;
 
@@ -36,7 +43,8 @@ function handleUserInfo() {
     console.log(checkSaveCriteria);
 
     // make ajax call
-    handleSearch();
+    handleCity();
+    // handleSearch();
 
     // display results
     if (checkSaveCriteria === true) {
@@ -91,7 +99,11 @@ function handleUserInfo() {
 // handleSearch - make ajax call and get response info for hikes to appear
 // TO DO - update the query URL with input from handleUserInfo
 function handleSearch() {
-    queryURL = `https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=${apiID}`;
+
+    // TO DO - there is no difficulty input parameter
+
+    queryURL = `https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lon}&maxDistance=${radiusInput}&minLength=${lengthInput}&minStars=${starInput}&key=${apiID}`;
+    console.log(queryURL);
     // Perfoming an AJAX GET request to our queryURL
     $.ajax({
         url: queryURL,
@@ -99,7 +111,7 @@ function handleSearch() {
     })
         // After the data from the AJAX request comes back
         .then(function (response) {
-            // console.log(response);
+            console.log(response);
             handleResults(response);
         });
 }
@@ -108,7 +120,7 @@ function handleSearch() {
 function handleResults(response) {
     // console.log(response);
     hikesReturned = response.trails; // store for use when user clicks selection
-    console.log(hikesReturned)
+    // console.log(hikesReturned)
     resultsEl.empty(); // clearresults section
     for (var i = 0; i < 5; i++) {
         // console.log(response.trails[i]);
@@ -133,12 +145,30 @@ function handleResults(response) {
 
 }
 
+
+function handleCity() {
+    const googleAPI = 'AIzaSyBhOGyxS_RiEneLIpqf6mUUIL2HI2sEms4'
+  
+    // First we need to turn the geolocation of the user into a valid address for Google to use.
+    const geocodeURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${locationInput}&key=${googleAPI}`
+  
+    $.ajax({
+      url: geocodeURL,
+      method: 'GET'
+    }).then(function (response) {
+      lat = response.results[0].geometry.location.lat;
+      lon = response.results[0].geometry.location.lng;
+      console.log(lat, lon)
+      handleSearch();
+    }) // catch a 404!
+  }
+
 // TO DO - create listener for when user clicks on search result
 $("#results").on("click", ".card", function() {
-    console.log("you clicked a hike!" + $(this).attr('id'));
+    // console.log("you clicked a hike!" + $(this).attr('id'));
     hikeSelected = hikesReturned[$(this).attr('id')];
     // use hikeSelected in script.js
-    console.log(hikeSelected);
+    // console.log(hikeSelected);
     localStorage.setItem("hikeSelected", JSON.stringify(hikeSelected));
     window.location.href = "results.html";
 });
