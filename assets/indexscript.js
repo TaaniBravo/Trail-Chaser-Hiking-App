@@ -16,8 +16,31 @@ var lon;
 
 var savedCriteria = JSON.parse(localStorage.getItem("savedCriteria")) || [];
 
+function init() {
+    if (savedCriteria != []) {
+            console.log("stuff was saved bro!");
+            $("#location").val(savedCriteria.location);
+            $("#length").val(savedCriteria.length);
+            $("#radius").val(savedCriteria.radius);
+            $("#date").val(savedCriteria.date);
+            $("#difficultyInput").val(savedCriteria.difficultyInput);
+            $("#ratingInput").val(savedCriteria.ratingInput);
+        };
+};
 // handleUserInfo - get user inputs
 function handleUserInfo() {
+    // if (savedCriteria != []) {
+    //     console.log("stuff was saved bro!");
+    //     $("#location").val("Chicadgo")
+    //     $("#length").val(3);
+    // };
+    
+    
+    
+    
+    
+    
+    
     // get inputs
     locationInput = $("#location").val();
     // TO DO - do some checks to make sure a place was already exits
@@ -70,7 +93,7 @@ function handleUserInfo() {
         //localStorage.setItem(key, value);
         //});
 
-        localStorage.setItem("savedCriteria", JSON.stringify(savedCriteria));
+        localStorage.setItem("savedCriteria", JSON.stringify(userData));
         //function that appends info into form
         
         
@@ -88,7 +111,7 @@ function handleUserInfo() {
 
     }
     else {
-        console.log(checkSaveCriteria);
+        localStorage.clear("savedCriteria");
     };
 
 
@@ -173,5 +196,6 @@ $("#results").on("click", ".card", function() {
 
 // TO DO - create function to save search criteria if user clicks checkbox
 
-
+init();
 $("#findBtn").on("click", handleUserInfo);
+

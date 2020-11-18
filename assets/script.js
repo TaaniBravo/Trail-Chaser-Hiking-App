@@ -1,4 +1,5 @@
 const hikeSelected = JSON.parse(localStorage.getItem('hikeSelected'))
+let map;
 
 $(document).ready(handleWeatherInfo)
 $(document).ready(handlenameanddescription)
@@ -14,7 +15,7 @@ function initMap() {
   let long = -122.82669
 
   // The location of hikeLocation
-  const hikeLocation = { lat: lat, lng: long };
+  const hikeLocation = { lat: hikeSelected.latitude, lng: hikeSelected.longitude };
   // The map, centered at hikeLocation
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 8,
@@ -64,7 +65,7 @@ function handleUserAddress(position) {
 function calcRoute(userAddress) {
 
   // LET the destination be EQUAL to this new Latitude and Longitude.
-  let destination = new google.maps.LatLng(47.5518333, -122.82669);
+  let destination = new google.maps.LatLng(hikeSelected.latitude, hikeSelected.longitude);
   // Variables that will create new directions and renderer them to the map for us.
   let directionsService = new google.maps.DirectionsService();
   let directionsRenderer = new google.maps.DirectionsRenderer();
@@ -86,6 +87,7 @@ function calcRoute(userAddress) {
     if (status == 'OK') {
       directionsRenderer.setMap(map)
       directionsRenderer.setDirections(result);
+      directionsRenderer.setPanel(document.getElementById("bottom-panel"));
     }
   });
 }
