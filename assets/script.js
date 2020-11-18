@@ -1,18 +1,14 @@
+// Global Variables
 const hikeSelected = JSON.parse(localStorage.getItem('hikeSelected'))
-let map;
 
+// Upon document being READY launches these functions.
 $(document).ready(handleWeatherInfo)
-$(document).ready(handlenameanddescription)
+$(document).ready(handleNameAndDescription)
 // This button events apply to the modal and what happens when each of the buttons are clicked.
 $('#closeBtn').on('click', handleGeoLocation)
 
-window.addEventListener('resize', 
-	() => map.getViewPort().resize());
-
 // Initialize and add the map
 function initMap() {
-  let lat = 47.5518333
-  let long = -122.82669
 
   // The location of hikeLocation
   const hikeLocation = { lat: hikeSelected.latitude, lng: hikeSelected.longitude };
@@ -21,13 +17,13 @@ function initMap() {
     zoom: 8,
     center: hikeLocation,
   });
-  
+
   // The marker, positioned at hikeLocation
   const marker = new google.maps.Marker({
     position: hikeLocation,
     map: map,
   });
- 
+
 }
 
 function handleGeoLocation() {
@@ -56,7 +52,6 @@ function handleUserAddress(position) {
     url: reverseGeoURL,
     method: 'GET'
   }).then(function (response) {
-    // console.log(response)
     let userAddress = response.results[0].formatted_address
     calcRoute(userAddress)
   })
@@ -82,7 +77,7 @@ function calcRoute(userAddress) {
     travelMode: "DRIVING"
   }
 
-  directionsService.route(request, function(result, status) {
+  directionsService.route(request, function (result, status) {
 
     if (status == 'OK') {
       directionsRenderer.setMap(map)
@@ -96,25 +91,19 @@ function handleWeatherInfo() {
 
   var APIKey = "52aa85fe9180c06fe869a1a3e7d7de19"
   var lat = hikeSelected.latitude
-
   var long = hikeSelected.longitude
 
   var queryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&appid=" + APIKey;
-
-
 
   $.ajax({
     url: queryURL,
     method: "GET"
   }).then(function (response) {
-
-     console.log(response)
-
-    appendweatherinfo(response)
+    appendWeatherInfo(response)
   })
 }
 
-function appendweatherinfo(response) {
+function appendWeatherInfo(response) {
 
   for (let i = 0; i <= 7; i++) {
 
@@ -122,20 +111,17 @@ function appendweatherinfo(response) {
     var tempF = (response.daily[i].temp.day - 273.15) * 1.80 + 32
 
     $(`#weathericon${i}`).attr('src', `https://openweathermap.org/img/wn/${response.daily[i].weather[0].icon}@2x.png`);
-    console.log(response.daily[i].weather[0].icon)
+  
     $("<p>").text('Temp: ' + tempF.toFixed(2) + "°F").appendTo(weatherAppend).addClass('is-size-4');
 
   }
-
-
-
 }
 
-function handlenameanddescription () {
+function handleNameAndDescription() {
 
-$("#hikeName").text(hikeSelected.name)
-$("#difficulty").text(hikeSelected.difficulty)
-$("#description").text(hikeSelected.summary)
+  $("#hikeName").text(hikeSelected.name)
+  $("#difficulty").text('Difficulty: ' + hikeSelected.difficulty).css('textTransform', 'capitalize')
+  $("#description").text(hikeSelected.summary)
 
 }
 
