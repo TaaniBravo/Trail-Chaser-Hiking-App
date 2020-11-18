@@ -146,7 +146,7 @@ function handleResults(response) {
     for (var i = 0; i < 5; i++) {
         // console.log(response.trails[i]);
         // create a card with info
-        var card = `<div class="card" id="${i}">
+        var card = `<div class="card index-cards" id="${i}">
                         <div class="card-content">
                             <div class="media">
                                 <div class="media-left">
@@ -156,7 +156,7 @@ function handleResults(response) {
                                 </div>
                                 <div class="media-content">
                                     <p class="title is-4">${response.trails[i].name}</p>
-                                    <p class="subtitle is-6">${response.trails[i].stars}</p>
+                                    <p class="subtitle is-6">${response.trails[i].stars}<i class="fas fa-star"></i></p>
                                 </div> 
                             </div> 
                         </div> 

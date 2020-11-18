@@ -42,6 +42,16 @@ body {
     border-radius: 5px;
 }
 
+.index-cards {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.fa-star {
+    font-size: .8rem;
+    color: gold;
+}
+
 #weathericon0,
 #weathericon1,
 #weathericon2,
