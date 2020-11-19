@@ -29,17 +29,6 @@ function init() {
 };
 // handleUserInfo - get user inputs
 function handleUserInfo() {
-    // if (savedCriteria != []) {
-    //     console.log("stuff was saved bro!");
-    //     $("#location").val("Chicadgo")
-    //     $("#length").val(3);
-    // };
-    
-    
-    
-    
-    
-    
     
     // get inputs
     locationInput = $("#location").val();
@@ -69,15 +58,15 @@ function handleUserInfo() {
     handleCity();
     // handleSearch();
 
-    // display results
-    if (checkSaveCriteria === true) {
-        //var locationInput = $("#location").val();
-        //var radiusInput = $("#radius").val();
-        //var lengthInput = $("#length").val();
-        //var dateInput = $("#date").val();
-        //var difficultyInput = $("#difficultyInput").val();
-        //var starInput = $("#ratingInput").val();
-
+    // IF the user doesnt input a city/location name
+    if (locationInput === ""){
+        console.log("hellooo hiker");
+        $("#location").val("Please enter a valid City Name!");
+        //return; 
+    }
+    
+    else if (checkSaveCriteria === true) {
+        
         var userData = {
             location: locationInput, 
             radius: radiusInput, 
@@ -89,23 +78,9 @@ function handleUserInfo() {
 
         //savedCriteria.push(userData)
 
-        //$.each(userData, function (i, index) {
-        //localStorage.setItem(key, value);
-        //});
-
         localStorage.setItem("savedCriteria", JSON.stringify(userData));
         //function that appends info into form
         
-        
-        //function handleStorage() {
-        //var savedUserData = localStorage.getItem("location");
-        //document.getElementById("location").innerText = savedUserData;
-        //};
-        //$.each(userData, function (i, index) {
-            //localStorage.getItem(index.key, index.value);
-            //document.getElementById().innerHTML
-        //});
-        //e.preventDefault();
 
         console.log(taylorSwift);
 
