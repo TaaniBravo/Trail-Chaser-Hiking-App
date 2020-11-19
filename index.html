@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trail Chasers</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+
+<body>
+
+  <header class="column hero is-centered">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title has-text-primary is-size-1" id="tcTitle">
+          <i class="fas fa-hiking"></i> Trail Chasers
+        </h1>
+        <h2 class="subtitle">
+          Your new hiking buddy!
+        </h2>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <!-- Form Inputs -->
+    <section class="container is-max-desktop is-centered p-1" id="form-group">
+      <div class="field has-text-white">
+        <label class="label has-text-white">Where do you wanna go hiking?</label>
+        <div class="control">
+          <input class="input" type="text" id = "location" placeholder="Location">
+        </div>
+      </div>
+
+      <div class="field is-two-thirds-desktop">
+        <label class="label has-text-white">Search Radius</label>
+        <div class="control">
+          <input class="input" type="text" id="radius" placeholder="Max: 200">
+        </div>
+      </div>
+
+      <div class="field is-two-thirds-desktop">
+        <label class="label has-text-white">Minimum Trail Length</label>
+        <div class="control">
+          <input class="input" id="length" type="text">
+        </div>
+      </div>
+
+      <select name="ratingInput" id="ratingInput">
+        <option value="" disabled selected>Select a rating</option>
+        <option value="1">1 Star & Up</option>
+        <option value="2">2 Star & Up</option>
+        <option value="3">3 Star & Up</option>
+        <option value="4">4 Star & Up</option>
+        <option value="5">5 Star</option>
+      </select>
+      <label class="checkbox has-text-white">
+        <input id= "checkboxChecker" type="checkbox">
+        Remember my criteria
+      </label>
+
+      <div id="btn-container" class="column mt-3">
+        <button class="button is-fullwidth is-primary" id="findBtn">Find YOUR Trails!</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Cards - image, hike name, and rating - will remove below card when satisfied with formatting-->
+  <section class="columns is-two-thirds-desktop is-centered" id="results">
+  </section>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="./assets/indexscript.js"></script>
+ 
+</body>
+
+</html>

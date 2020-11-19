@@ -1,0 +1,110 @@
+:root {
+    --transparent-bg: rgba(60, 60, 60, 0.4);
+    --bulma-primary: hsl(171, 100%, 41%)
+}
+
+html {
+    background-image: url(./images/mountaineers-5649828.jpg);
+    background-size: cover;
+    background-image: center;
+    background-attachment: fixed;
+}
+
+body {
+    font-family: 'Indie Flower', cursive;
+}
+
+#results .card {
+    max-width: 50%;
+    margin: 0 auto 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    
+}
+
+/* added hover color for cards */
+#results .card:hover {
+    background-color:#e9e967;
+}
+
+#form-group {
+    padding: 20px;
+}
+
+#form-group, .tile-group {
+    border-radius: 5px;
+    background-color: var(--transparent-bg);
+}
+
+.modal-content {
+    background-color: white;
+    padding: 5px 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5px;
+}
+
+#map {
+    height: 600px;
+    width: 100%;
+}
+
+#bottom-panel {
+    border-radius: 5px;
+    background-color: white;
+    overflow: scroll;
+    height: 600px;
+}
+
+.card,
+#hikeImage {
+    border-radius: 5px;
+}
+
+.index-cards {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.fa-star {
+    font-size: .8rem;
+    color: gold;
+}
+
+#weathericon0,
+#weathericon1,
+#weathericon2,
+#weathericon3,
+#weathericon4,
+#weathericon5,
+#weathericon6 {
+    background-color: var(--bulma-primary);
+    border-radius: 5px;
+}
+
+/* color classes for the difficulty */
+.dBlack, .dBlueBlack, .dBlue, .dGreen {
+    color: white;
+    border-radius: 10%;
+    padding: 1.5px;
+    opacity: 80%;
+}
+
+.dBlack {
+    background-color: rgba(0,0,0);
+}
+
+.dBlueBlack {
+    background-color: rgba(0,0,120);
+}
+
+.dBlue {
+    background-color: rgba(0,0,255);
+}
+
+.dGreen {
+    background-color: rgba(0,120,0);
+}
+
+#card-container {
+    flex-wrap: wrap;
+}
