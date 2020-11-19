@@ -104,3 +104,7 @@ body {
 .dGreen {
     background-color: rgba(0,120,0);
 }
+
+#card-container {
+    flex-wrap: wrap;
+}
