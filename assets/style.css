@@ -27,6 +27,10 @@ body {
     background-color:#e9e967;
 }
 
+#form-group {
+    padding: 20px;
+}
+
 #form-group, .tile-group {
     border-radius: 5px;
     background-color: var(--transparent-bg);
@@ -51,7 +55,8 @@ body {
     height: 600px;
 }
 
-.card {
+.card,
+#hikeImage {
     border-radius: 5px;
 }
 
