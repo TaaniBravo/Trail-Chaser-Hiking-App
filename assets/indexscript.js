@@ -118,6 +118,37 @@ function handleResults(response) {
   resultsEl.empty(); // clearresults section
   for (var i = 0; i < 5; i++) {
     // console.log(response.trails[i]);
+    // get difficulty and assign color class
+    var difficultyText;
+    var difficultyClass;
+    console.log(response.trails[i].difficulty.trim());
+    switch (response.trails[i].difficulty.trim()){
+      case("blackBlack"):
+      difficultyText = "Very Difficult";
+      difficultyClass = "dBlack";
+      break;
+      case("black"):
+      difficultyText = "Difficult";
+      difficultyClass = "dBlack";
+      break;
+      case("blueBlack"):
+      difficultyText = "Intermediate/Difficult";
+      difficultyClass = "dBlueBlack";
+      break;
+      case("blue"):
+      difficultyText = "Intermediate";
+      difficultyClass = "dBlue";
+      break;
+      case("greenBlue"):
+      difficultyText = "Easy/Intermediate";
+      difficultyClass = "dGreen";
+      break;
+      case("green"):
+      difficultyText = "Easy";
+      difficultyClass = "dGreen";
+      break;
+    }
+    // console.log(difficultyClass);
     // create a card with info
     var card = `<div class="card" id="${i}">
                         <div class="card-content">
@@ -131,7 +162,7 @@ function handleResults(response) {
                                     <p class="is-size-4">${response.trails[i].name}</p>
                                     <p>${response.trails[i].stars}<i class="fas fa-star"></i></p>
                                     <p>Location: ${response.trails[i].location}</p> 
-                                    <p class="index-difficulty">Difficulty: ${response.trails[i].difficulty}</p>
+                                    <p class="index-difficulty">Difficulty: <span class="${difficultyClass}">${difficultyText}</span></p>
                                 </div> 
                             </div> 
                         </div> 
