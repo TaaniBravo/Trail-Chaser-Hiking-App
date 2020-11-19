@@ -1,5 +1,6 @@
 :root {
     --transparent-bg: rgba(60, 60, 60, 0.4);
+    --bulma-primary: hsl(171, 100%, 41%)
 }
 
 html {
@@ -37,14 +38,29 @@ body {
 }
 
 #map {
-    max-height: 360px;
-    max-width: 480px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+    height: 600px;
+    width: 100%;
+}
+
+#bottom-panel {
     border-radius: 5px;
+    background-color: white;
+    overflow: scroll;
+    height: 600px;
+}
+
+.card {
+    border-radius: 5px;
+}
+
+.index-cards {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.fa-star {
+    font-size: .8rem;
+    color: gold;
 }
 
 #weathericon0,
@@ -54,6 +70,6 @@ body {
 #weathericon4,
 #weathericon5,
 #weathericon6 {
-    background-color: hsl(141, 53%, 31%);
+    background-color: var(--bulma-primary);
     border-radius: 5px;
 }

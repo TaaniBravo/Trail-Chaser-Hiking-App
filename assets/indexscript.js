@@ -144,7 +144,7 @@ function handleResults(response) {
                                 </div>
                                 <div class="media-content">
                                     <p class="title is-4">${response.trails[i].name}</p>
-                                    <p class="subtitle is-6">${response.trails[i].stars}</p>
+                                    <p class="subtitle is-6">${response.trails[i].stars}<i class="fas fa-star"></i></p>
                                 </div> 
                             </div> 
                         </div> 
