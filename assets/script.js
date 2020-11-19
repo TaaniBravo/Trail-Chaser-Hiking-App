@@ -115,13 +115,15 @@ function appendWeatherInfo(response) {
 
     $(`#weathericon${i}`).attr('src', `https://openweathermap.org/img/wn/${response.daily[i].weather[0].icon}@2x.png`);
   
-    $("<p>").text('Temp: ' + tempF.toFixed(2) + "°F").appendTo(weatherAppend).addClass('is-size-4');
+    $("<p>").text('Temp: ' + tempF.toFixed(2) + "°F").appendTo(weatherAppend).addClass('is-size-5');
 
   }
 }
 
 function handleNameAndDescription() {
 
+  $('title').text('Trail Chasers: ' + hikeSelected.name)
+  $('#hikeImage').attr('src', hikeSelected.imgMedium)
   $("#hikeName").text(hikeSelected.name)
   $("#difficulty").text('Difficulty: ' + hikeSelected.difficulty).css('textTransform', 'capitalize')
   $("#description").text(hikeSelected.summary)
