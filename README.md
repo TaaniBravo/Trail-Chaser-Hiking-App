@@ -14,7 +14,7 @@ LIVE URL:
 
 ## Description
 ```
-An app for users to find trails nearby or by a specific location. Other criteria a user can search for includes: difficulty, reviews (ex. stars), length and distance from user's location. The weather of the location of the app will also be displayed based on the date that the user chooses. 
+An app for users to find trails nearby or by a specific location. Other criteria a user can search for includes: reviews (ex. stars), length and distance from user's location. Once a trail is chosen, the directions to the trail and the weather for the next 7 days is displayed.
 
 The app utilizes hiking, maps, time, and weather APIs (View Resources).
 ```
@@ -35,7 +35,7 @@ When presented with the acceptance criteria for our first project in this bootca
 
 With this idea in mind we thought it would be nice if we had an app that would find your trails based on certain criteria that would help you make the right decision and not go on an adventure that you are going to regret.
 
-After brainstorming the tangible things that we felt were accomplishable and able to be made in the time given to us were implementing the search, saving your criteria, giving you weather for a specified time, and a map from your location to the trail.
+After brainstorming the tangible things that we felt were accomplishable and able to be made in the time given to us were implementing the search, saving your criteria, giving you weather for the next 7 days, and a map from your location to the trail.
 ```
 
 ## Breakdown of tasks
@@ -54,7 +54,7 @@ While this was the structure we gave ourselves we all pitched in to help each ot
 * Hiking Project - https://www.hikingproject.com/data
 * Google Maps API - https://developers.google.com/maps/
 * Open Weather -  https://openweathermap.org/api
-* MomentJS - 
+* MomentJS - https://momentjs.com/
 * Bulma - https://bulma.io/documentation/
 ```
 
