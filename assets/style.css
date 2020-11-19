@@ -13,6 +13,17 @@ body {
     font-family: 'Indie Flower', cursive;
 }
 
+#results .card {
+    max-width: 50%;
+    margin: 0 auto;
+    border-radius: 4px;
+}
+
+/* added hover color for cards */
+#results .card:hover {
+    background-color:#e9e967;
+}
+
 #form-group, .tile-group {
     border-radius: 5px;
     background-color: var(--transparent-bg);
