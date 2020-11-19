@@ -118,7 +118,7 @@ function handleResults(response) {
   resultsEl.empty(); // clearresults section
   for (var i = 0; i < 5; i++) {
     // console.log(response.trails[i]);
-    // get difficulty
+    // get difficulty and assign color class
     var difficultyText;
     var difficultyClass;
     console.log(response.trails[i].difficulty.trim());
