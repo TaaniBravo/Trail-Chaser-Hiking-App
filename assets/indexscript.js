@@ -8,8 +8,6 @@ var userHikeSelected;
 var locationInput;
 var radiusInput;
 var lengthInput;
-var dateInput;
-var difficultyInput;
 var starInput;
 var lat;
 var lon;
@@ -18,12 +16,9 @@ var savedCriteria = JSON.parse(localStorage.getItem("savedCriteria")) || [];
 
 function init() {
   if (savedCriteria != []) {
-    console.log("stuff was saved bro!");
     $("#location").val(savedCriteria.location);
     $("#length").val(savedCriteria.length);
     $("#radius").val(savedCriteria.radius);
-    $("#date").val(savedCriteria.date);
-    $("#difficultyInput").val(savedCriteria.difficultyInput);
     $("#ratingInput").val(savedCriteria.ratingInput);
   }
 }
@@ -36,24 +31,11 @@ function handleUserInfo() {
     radiusInput = $("#radius").val();
     // TO DO - check radius and length are actual numbers
     lengthInput = $("#length").val();
-    dateInput = $("#date").val();
-    difficultyInput = $("#difficultyInput").val();
     starInput = $("#ratingInput").val();
 
     let checkSaveCriteria = document.getElementById('checkboxChecker').checked;
 
-    // I Created this variable just to see if my if statement was working.
-    var taylorSwift = "We're all Taylor Swift fans here!";
-
-    console.log(locationInput);
-    console.log(radiusInput);
-    console.log(lengthInput);
-    console.log(dateInput);
-    console.log(difficultyInput);
-    console.log(starInput);
-
-    console.log(checkSaveCriteria);
-
+    
     // make ajax call
     handleCity();
     // handleSearch();
@@ -70,20 +52,13 @@ function handleUserInfo() {
         var userData = {
             location: locationInput, 
             radius: radiusInput, 
-            length: lengthInput, 
-            date: dateInput, 
-            difficultyInput: difficultyInput, 
+            length: lengthInput,  
             ratingInput: starInput
         };
-
-        //savedCriteria.push(userData)
 
         localStorage.setItem("savedCriteria", JSON.stringify(userData));
         //function that appends info into form
         
-
-        console.log(taylorSwift);
-
     }
     else {
         localStorage.clear("savedCriteria");
