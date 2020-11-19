@@ -111,6 +111,8 @@ function appendWeatherInfo(response) {
     var weatherAppend = $(`#weatherinfo${i}`);
     var tempF = (response.daily[i].temp.day - 273.15) * 1.80 + 32
 
+    $(`#weatherday${i}`).text(moment().add(i, "d").format("l"));
+
     $(`#weathericon${i}`).attr('src', `https://openweathermap.org/img/wn/${response.daily[i].weather[0].icon}@2x.png`);
   
     $("<p>").text('Temp: ' + tempF.toFixed(2) + "°F").appendTo(weatherAppend).addClass('is-size-4');
