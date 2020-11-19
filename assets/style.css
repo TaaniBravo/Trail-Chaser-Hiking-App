@@ -16,8 +16,10 @@ body {
 
 #results .card {
     max-width: 50%;
-    margin: 0 auto;
+    margin: 0 auto 10px;
     border-radius: 4px;
+    cursor: pointer;
+    
 }
 
 /* added hover color for cards */
