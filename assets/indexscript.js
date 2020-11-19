@@ -32,18 +32,13 @@ function handleUserInfo() {
     
     // get inputs
     locationInput = $("#location").val();
-    // TO DO - do some checks to make sure a place was already exits
     radiusInput = $("#radius").val();
-    // TO DO - check radius and length are actual numbers
     lengthInput = $("#length").val();
     dateInput = $("#date").val();
     difficultyInput = $("#difficultyInput").val();
     starInput = $("#ratingInput").val();
 
     let checkSaveCriteria = document.getElementById('checkboxChecker').checked;
-
-    // I Created this variable just to see if my if statement was working.
-    var taylorSwift = "We're all Taylor Swift fans here!";
 
     console.log(locationInput);
     console.log(radiusInput);
@@ -60,8 +55,10 @@ function handleUserInfo() {
 
     // IF the user doesnt input a city/location name
     if (locationInput === ""){
-        console.log("hellooo hiker");
+        // console.log("hellooo hiker");
         $("#location").val("Please enter a valid City Name!");
+        $("#results").empty();
+
         //return; 
     }
     
@@ -92,10 +89,7 @@ function handleUserInfo() {
 }
 
 // handleSearch - make ajax call and get response info for hikes to appear
-// TO DO - update the query URL with input from handleUserInfo
 function handleSearch() {
-  // TO DO - there is no difficulty input parameter
-
   queryURL = `https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lon}&maxDistance=${radiusInput}&minLength=${lengthInput}&minStars=${starInput}&key=${apiID}`;
   console.log(queryURL);
   // Perfoming an AJAX GET request to our queryURL
@@ -105,14 +99,13 @@ function handleSearch() {
   })
     // After the data from the AJAX request comes back
     .then(function (response) {
-      console.log(response);
+      // console.log(response);
       handleResults(response);
     });
 }
 
 // handleResults - display results of first 5 results in card form
 function handleResults(response) {
-  // console.log(response);
   hikesReturned = response.trails; // store for use when user clicks selection
   // console.log(hikesReturned)
   resultsEl.empty(); // clearresults section
@@ -195,17 +188,14 @@ function handleCity() {
   });
 }
 
-// TO DO - create listener for when user clicks on search result
+// listen for hike result to be clicked on
 $("#results").on("click", ".card", function () {
-  // console.log("you clicked a hike!" + $(this).attr('id'));
   userHikeSelected = hikesReturned[$(this).attr("id")];
-  // use userHikeSelected in script.js
   // console.log(userHikeSelected);
   localStorage.setItem("hikeSelected", JSON.stringify(userHikeSelected));
   window.location.href = "results.html";
 });
 
-// TO DO - create function to save search criteria if user clicks checkbox
-
 init();
+
 $("#findBtn").on("click", handleUserInfo);
