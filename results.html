@@ -4,12 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/style.css">
+
+  <title>Trail Chasers: Your Next Hike</title>
 </head>
 
 <body>
@@ -37,151 +38,156 @@
       </div>
     </div>
   </header>
-  <main class="container">
+  <main class="section">
+    <section class="container">
+      <div class="tile is-ancestor has-text-white">
 
-    <div class="tile is-ancestor has-text-white">
+        <div class="tile is-vertical is-12">
+          <div class="tile">
+            <div class="tile is-parent">
+              <figure class="image">
+                <img id='hikeImage' src="" alt="Hike Image">
+              </figure>
+            </div>
+            <div class="tile is-parent is-vertical">
 
-      <div class="tile is-vertical is-12">
-        <div class="tile">
-          <div class="tile is-parent is-vertical">
+              <article class="tile is-child notification tile-group">
+                <p id="hikeName" class="title has-text-primary"></p>
+                <p id="difficulty" class="subtitle is-size-4"></p>
+              </article>
 
-            <article class="tile is-child notification tile-group">
-              <p id="hikeName" class="title has-text-primary"></p>
-              <p id="difficulty" class="subtitle is-size-4"></p>
-            </article>
-
-            <article class="tile is-child notification tile-group">
-              <p class="title has-text-primary">Summary</p>
-              <p id="description" class="subtitle is-size-4"></p>
-            </article>
-
-          </div>
-
-        </div>
-
-        <div class="tile is-parent">
-          <article class="tile is-child notification tile-group">
-            <p class="title has-text-primary">Weather Forecast</p>
-
-            <div class="columns">
-
-              <div class="card column level-item has-text-centered">
-                <div class="card-content">
-                  <div class="media-content">
-                    <p id="weatherday0" class="is-size-3"></p>
-                    <figure class="image container is-48x48">
-                      <img id="weathericon0" src="https://bulma.io/images/placeholders/96x96.png"
-                        alt="Placeholder image">
-                    </figure>
-                  </div>
-                </div>
-                <div id="weatherinfo0" class="content"></div>
-              </div>
-
-              <div class="card column level-item has-text-centered">
-                <div class="card-content">
-                  <div class="media-content">
-                    <p id="weatherday1" class="is-size-3"></p>
-                    <figure class="image container is-48x48">
-                      <img id="weathericon1" src="https://bulma.io/images/placeholders/96x96.png"
-                        alt="Placeholder image">
-                    </figure>
-                  </div>
-                </div>
-                <div id="weatherinfo1" class="content">
-                </div>
-              </div>
-
-              <div class="card column level-item has-text-centered">
-                <div class="card-content">
-                  <div class="media-content">
-                    <p id="weatherday2" class="is-size-3"></p>
-                    <figure class="image container is-48x48">
-                      <img id="weathericon2" src="https://bulma.io/images/placeholders/96x96.png"
-                        alt="Placeholder image">
-                    </figure>
-                  </div>
-                </div>
-                <div id="weatherinfo2" class="content"></div>
-              </div>
-
-              <div class="card column level-item has-text-centered">
-                <div class="card-content">
-                  <div class="media-content">
-                    <p id="weatherday3" class="is-size-3"></p>
-                    <figure class="image container is-48x48">
-                      <img id="weathericon3" src="https://bulma.io/images/placeholders/96x96.png"
-                        alt="Placeholder image">
-                    </figure>
-                  </div>
-                </div>
-                <div id="weatherinfo3" class="content">
-                </div>
-              </div>
-
-              <div class="card column level-item has-text-centered">
-                <div class="card-content">
-                  <div class="media-content">
-                    <p id="weatherday4" class="is-size-3"></p>
-                    <figure class="image container is-48x48">
-                      <img id="weathericon4" src="https://bulma.io/images/placeholders/96x96.png"
-                        alt="Placeholder image">
-                    </figure>
-                  </div>
-                </div>
-                <div id="weatherinfo4" class="content"></div>
-              </div>
-
-              <div class="card column level-item has-text-centered">
-                <div class="card-content">
-                  <div class="media-content">
-                    <p id="weatherday5" class="is-size-3"></p>
-                    <figure class="image container is-48x48">
-                      <img id="weathericon5" src="https://bulma.io/images/placeholders/96x96.png"
-                        alt="Placeholder image">
-                    </figure>
-                  </div>
-                </div>
-                <div id="weatherinfo5" class="content">
-                </div>
-              </div>
-
-              <div class="card column level-item has-text-centered">
-                <div class="card-image">
-                </div>
-                <div class="card-content">
-                  <div class="media-content">
-                    <p id="weatherday6" class="is-size-3"></p>
-                    <figure class="image container is-48x48">
-                      <img id="weathericon6" src="https://bulma.io/images/placeholders/96x96.png"
-                        alt="Placeholder image">
-                    </figure>
-                  </div>
-                </div>
-                <div id="weatherinfo6" class="content">
-                </div>
-              </div>
+              <article class="tile is-child notification tile-group">
+                <p class="title has-text-primary">Summary</p>
+                <p id="description" class="subtitle is-size-4"></p>
+              </article>
 
             </div>
-          </article>
-        </div>
 
-        <div class="tile is-parent">
-          <div class="tile">
+          </div>
+
+          <div class="tile is-parent">
             <article class="tile is-child notification tile-group">
-              <p class="title is-size-3 has-text-primary">Route</p>
-              <div id="map"></div>
-            </article>
-            <article class="tile is-child notification tile-group">
-              <p class="title is-size-3 has-text-primary">Directions</p>
-              <div id="bottom-panel"></div>
+              <p class="title has-text-primary">Weather Forecast</p>
+
+              <div class="columns is-flex-wrap-wrap">
+
+                <div class="card column level-item has-text-centered">
+                  <div class="card-content">
+                    <div class="media-content">
+                      <p id="weatherday0" class="is-size-4 has-text-centered"></p>
+                      <figure class="image container is-48x48">
+                        <img id="weathericon0" src="https://bulma.io/images/placeholders/96x96.png"
+                          alt="Placeholder image">
+                      </figure>
+                    </div>
+                  </div>
+                  <div id="weatherinfo0" class="content"></div>
+                </div>
+
+                <div class="card column level-item has-text-centered">
+                  <div class="card-content">
+                    <div class="media-content">
+                      <p id="weatherday1" class="is-size-4 has-text-centered"></p>
+                      <figure class="image container is-48x48">
+                        <img id="weathericon1" src="https://bulma.io/images/placeholders/96x96.png"
+                          alt="Placeholder image">
+                      </figure>
+                    </div>
+                  </div>
+                  <div id="weatherinfo1" class="content">
+                  </div>
+                </div>
+
+                <div class="card column level-item has-text-centered">
+                  <div class="card-content">
+                    <div class="media-content">
+                      <p id="weatherday2" class="is-size-4 has-text-centered"></p>
+                      <figure class="image container is-48x48">
+                        <img id="weathericon2" src="https://bulma.io/images/placeholders/96x96.png"
+                          alt="Placeholder image">
+                      </figure>
+                    </div>
+                  </div>
+                  <div id="weatherinfo2" class="content"></div>
+                </div>
+
+                <div class="card column level-item has-text-centered">
+                  <div class="card-content">
+                    <div class="media-content">
+                      <p id="weatherday3" class="is-size-4 has-text-centered"></p>
+                      <figure class="image container is-48x48">
+                        <img id="weathericon3" src="https://bulma.io/images/placeholders/96x96.png"
+                          alt="Placeholder image">
+                      </figure>
+                    </div>
+                  </div>
+                  <div id="weatherinfo3" class="content">
+                  </div>
+                </div>
+
+                <div class="card column level-item has-text-centered">
+                  <div class="card-content">
+                    <div class="media-content">
+                      <p id="weatherday4" class="is-size-4 has-text-centered"></p>
+                      <figure class="image container is-48x48">
+                        <img id="weathericon4" src="https://bulma.io/images/placeholders/96x96.png"
+                          alt="Placeholder image">
+                      </figure>
+                    </div>
+                  </div>
+                  <div id="weatherinfo4" class="content"></div>
+                </div>
+
+                <div class="card column level-item has-text-centered">
+                  <div class="card-content">
+                    <div class="media-content">
+                      <p id="weatherday5" class="is-size-4 has-text-centered"></p>
+                      <figure class="image container is-48x48">
+                        <img id="weathericon5" src="https://bulma.io/images/placeholders/96x96.png"
+                          alt="Placeholder image">
+                      </figure>
+                    </div>
+                  </div>
+                  <div id="weatherinfo5" class="content">
+                  </div>
+                </div>
+
+                <div class="card column level-item has-text-centered">
+                  <div class="card-image">
+                  </div>
+                  <div class="card-content">
+                    <div class="media-content">
+                      <p id="weatherday6" class="is-size-4 has-text-centered"></p>
+                      <figure class="image container is-48x48">
+                        <img id="weathericon6" src="https://bulma.io/images/placeholders/96x96.png"
+                          alt="Placeholder image">
+                      </figure>
+                    </div>
+                  </div>
+                  <div id="weatherinfo6" class="content">
+                  </div>
+                </div>
+
+              </div>
             </article>
           </div>
+
+          <div class="tile is-parent">
+            <div class="tile">
+              <article class="tile is-child notification tile-group">
+                <p class="title is-size-3 has-text-primary">Route</p>
+                <div id="map"></div>
+              </article>
+              <article class="tile is-child notification tile-group">
+                <p class="title is-size-3 has-text-primary">Directions</p>
+                <div id="bottom-panel"></div>
+              </article>
+            </div>
+          </div>
         </div>
+
       </div>
-
-    </div>
-
+    </section>
   </main>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
