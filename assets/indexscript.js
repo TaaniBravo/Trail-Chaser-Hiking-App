@@ -103,13 +103,16 @@ function handleResults(response) {
                                     </figure>
                                 </div>
                                 <div class="media-content">
-                                    <p class="title is-4">${response.trails[i].name}</p>
-                                    <p class="subtitle is-6">${response.trails[i].stars}<i class="fas fa-star"></i></p>
+                                    <p class="is-size-4">${response.trails[i].name}</p>
+                                    <p>${response.trails[i].stars}<i class="fas fa-star"></i></p>
+                                    <p>Location: ${response.trails[i].location}</p> 
+                                    <p class="index-difficulty">Difficulty: ${response.trails[i].difficulty}</p>
                                 </div> 
                             </div> 
                         </div> 
                     </div>`;
     resultsEl.append(card);
+    $(".index-difficulty").css("textTransform", "capitalize");
   }
 }
 
@@ -130,8 +133,8 @@ function handleCity() {
       console.log(lat, lon);
       handleSearch();
     } else if (response.status == "ZERO_RESULTS") {
-      alert("Error! City not found!"); // replace with modal?
       $("#results").empty();
+      $("#location").val("Please enter a valid City Name!");
     }
   });
 }
