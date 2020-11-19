@@ -46,7 +46,6 @@ function handleUserInfo() {
         $("#location").val("Please enter a valid City Name!");
         //return; 
     }
-    
     else if (checkSaveCriteria === true) {
         
         var userData = {
