@@ -1,5 +1,6 @@
 // Global Variables
 const hikeSelected = JSON.parse(localStorage.getItem('hikeSelected'))
+const date = moment().format('l')
 
 // Upon document being READY launches these functions.
 $(document).ready(handleWeatherInfo)
