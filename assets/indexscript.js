@@ -8,8 +8,6 @@ var userHikeSelected;
 var locationInput;
 var radiusInput;
 var lengthInput;
-var dateInput;
-var difficultyInput;
 var starInput;
 var lat;
 var lon;
@@ -21,8 +19,6 @@ function init() {
     $("#location").val(savedCriteria.location);
     $("#length").val(savedCriteria.length);
     $("#radius").val(savedCriteria.radius);
-    $("#date").val(savedCriteria.date);
-    $("#difficultyInput").val(savedCriteria.difficultyInput);
     $("#ratingInput").val(savedCriteria.ratingInput);
   }
 }
@@ -33,8 +29,6 @@ function handleUserInfo() {
     locationInput = $("#location").val();
     radiusInput = $("#radius").val();
     lengthInput = $("#length").val();
-    dateInput = $("#date").val();
-    difficultyInput = $("#difficultyInput").val();
     starInput = $("#ratingInput").val();
 
     let checkSaveCriteria = document.getElementById('checkboxChecker').checked;
@@ -96,7 +90,6 @@ function handleResults(response) {
     // get difficulty and assign color class
     var difficultyText;
     var difficultyClass;
-    console.log(response.trails[i].difficulty.trim());
     switch (response.trails[i].difficulty.trim()){
       case("blackBlack"):
       difficultyText = "Very Difficult";
@@ -156,11 +149,9 @@ function handleCity() {
     url: geocodeURL,
     method: "GET",
   }).then(function (response) {
-    console.log(response);
     if (response.status == "OK") {
       lat = response.results[0].geometry.location.lat;
       lon = response.results[0].geometry.location.lng;
-      console.log(lat, lon);
       handleSearch();
     } else if (response.status == "ZERO_RESULTS") {
       $("#results").empty();
