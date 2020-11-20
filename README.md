@@ -20,6 +20,7 @@ The app utilizes hiking, maps, time, and weather APIs (View Resources).
 ```
 
 ## Visual Example
+![Alt Text](https://media.giphy.com/media/UJghnlpNrG23am8Lx1/giphy.gif)
 
 
 ## User Story
