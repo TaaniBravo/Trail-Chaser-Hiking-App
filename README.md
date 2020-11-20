@@ -1,7 +1,7 @@
 # Trail Chaser Hike Finding App
 This is Project 1 for UW Coding Bootcamp. Introducing your new hiking buddy!
 
-LIVE URL:
+LIVE URL: https://taanibravo.github.io/Trail-Chaser-Hiking-App/
 
 ## Directory
     1. Description
