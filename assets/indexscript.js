@@ -51,8 +51,6 @@ function handleUserInfo() {
             location: locationInput, 
             radius: radiusInput, 
             length: lengthInput, 
-            date: dateInput, 
-            difficultyInput: difficultyInput, 
             ratingInput: starInput
         };
 
