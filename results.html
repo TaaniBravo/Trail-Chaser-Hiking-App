@@ -49,8 +49,8 @@
       </div>
     </div>
   </header>
-  <main class="section">
-    <section class="container">
+  <!-- <main > -->
+  <!-- <section class="container">
       <div class="tile is-ancestor has-text-white">
 
         <div class="tile is-vertical is-12">
@@ -198,7 +198,69 @@
         </div>
 
       </div>
+    </section> -->
+  <!-- </main> -->
+
+  <main class="col-12">
+    <section class="row col-12">
+      <figure class="col-lg-6">
+        <img id='hikeImage' src="" alt="Hike Image">
+      </figure>
+      <div col-lg-6>
+        <h3 id="hikeName"></h3>
+        <p id="difficulty"></p>
+        <p id="description"></p>
+      </div>
     </section>
+    <section class="col-12 d-flex flex-row flex-wrap justify-content-center">
+      <div class="card text-center col-md-2">
+        <div class="card-body">
+          <img id="weathericon0" alt="Weather Icon">
+          <h5 id='weatherday0' class="card-title"></h5>
+          <p id="weatherinfo0" class="card-text"></p>
+        </div>
+      </div>
+      <div class="card text-center col-md-2">
+        <div class="card-body">
+          <img id="weathericon1" alt="Weather Icon">
+          <h5 id='weatherday1' class="card-title"></h5>
+          <p id="weatherinfo1" class="card-text"></p>
+        </div>
+      </div>
+      <div class="card text-center col-md-2">
+        <div class="card-body">
+          <img id="weathericon2" alt="Weather Icon">
+          <h5 id='weatherday2' class="card-title"></h5>
+          <p id="weatherinfo2" class="card-text"></p>
+        </div>
+      </div>
+      <div class="card text-center col-md-2">
+        <div class="card-body">
+          <img id="weathericon3" alt="Weather Icon">
+          <h5 id='weatherday3' class="card-title"></h5>
+          <p id="weatherinfo3" class="card-text"></p>
+        </div>
+      </div>
+      <div class="card text-center col-md-2">
+        <div class="card-body">
+          <img id="weathericon4" alt="Weather Icon">
+          <h5 id='weatherday4' class="card-title"></h5>
+          <p id="weatherinfo4" class="card-text"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="row col-lg-12">
+      <article class="col-lg-6">
+        <p class="">Route</p>
+        <div id="map"></div>
+      </article>
+      <article class="col-lg-6">
+        <p class="">Directions</p>
+        <div id="bottom-panel"></div>
+      </article>
+    </section>
+
   </main>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
