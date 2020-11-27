@@ -2,16 +2,21 @@
     --transparent-bg: rgba(60, 60, 60, 0.4);
     --bulma-primary: hsl(171, 100%, 41%)
 }
-
+/* 
 html {
     background-image: url(./images/mountaineers-5649828.jpg);
     background-size: cover;
     background-image: center;
     background-attachment: fixed;
-}
+} */
 
+/* SP - I moved the background stuff to the body, I couldn't get it to show up with it in the html tag using bootstrap */
 body {
     font-family: 'Indie Flower', cursive;
+    background-image: url(./images/mountaineers-5649828.jpg);
+    background-size: cover;
+    background-image: center;
+    background-attachment: fixed;
 }
 
 #results .card {
