@@ -201,10 +201,10 @@
     </section> -->
   <!-- </main> -->
 
-  <main class="col-12">
-    <ul class="nav nav-tabs">
+  <main class="col-lg-12 justify-content-center">
+    <!-- <ul class="nav nav-tabs col-md-6">
       <li class="nav-item">
-        <a class="nav-link active" href="#info"><span></span>Info</a>
+        <a class="nav-link active" href="#info"><span id="hike-info"></span>Info</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
@@ -215,19 +215,20 @@
       <li class="nav-item">
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
       </li>
-    </ul>
+    </ul> -->
 
-    <section class="row col-12" id="info">
-      <figure class="col-lg-6">
-        <img id='hikeImage' src="" alt="Hike Image">
+    <section class="col-lg-12 p-4 rounded d-flex flex-row flex-wrap justify-content-center" id="info">
+      <figure class="col-lg-6 rounded">
+        <img  class='col-lg-12' id='hikeImage' src="" alt="Hike Image">
       </figure>
-      <div col-lg-6>
-        <h3 id="hikeName"></h3>
+      <div class='col-lg-6 text-white'>
+        <h3  class='display-4' id="hikeName"></h3>
         <p id="difficulty"></p>
         <p id="description"></p>
       </div>
     </section>
-    <section class="col-12 d-flex flex-row flex-wrap justify-content-center">
+
+    <section class="col-12 p-4 rounded d-flex flex-row flex-wrap justify-content-around">
       <div class="card text-center col-md-2">
         <div class="card-body">
           <img id="weathericon0" alt="Weather Icon">
@@ -265,15 +266,16 @@
       </div>
     </section>
 
-    <section class="row col-lg-12">
-      <article class="col-lg-6">
-        <p class="">Route</p>
+    <section class="col-lg-12 rounded p-4" id="map-section">
+      <div class="col-lg-12">
         <div id="map"></div>
-      </article>
-      <article class="col-lg-6">
-        <p class="">Directions</p>
+      </div>
+    </section>
+
+    <section class="col-lg-12 rounded p-4" id="direction-section">
+      <div class="col-lg-12">
         <div id="bottom-panel"></div>
-      </article>
+      </div>
     </section>
 
   </main>
