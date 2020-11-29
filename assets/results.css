@@ -8,6 +8,10 @@ section {
     border-radius: 0 .25rem .25rem .25rem;
 }
 
+#nav-mobile {
+    display: none;
+}
+
 .custom-btn {
     background-color: var(--transparent-bg);
     border: none;
@@ -19,4 +23,18 @@ section {
 
 .active {
     background-color: rgba(60, 60, 60, 0.8);
+}
+
+.hide {
+    display: none !important;
+}
+
+@media screen and (max-width: 768px) {
+    #nav-desktop {
+        display: none;
+    }
+
+    #nav-mobile {
+        display: inherit;
+    }
 }

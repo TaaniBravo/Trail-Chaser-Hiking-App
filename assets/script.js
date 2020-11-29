@@ -1,12 +1,18 @@
 // Global Variables
 const hikeSelected = JSON.parse(localStorage.getItem('hikeSelected'))
 const date = moment()
+const $infoEl = $('#info-section')
+const $weatherEl = $('#weather-section')
+const $mapEl = $('#map-section')
+const $directionsEl = $('#directions-section')
 
 // Upon document being READY launches these functions.
 $(document).ready(handleWeatherInfo)
 $(document).ready(handleNameAndDescription)
+$('#myModal').modal('show')
 // This button events apply to the modal and what happens when each of the buttons are clicked.
 $('#closeBtn').on('click', handleGeoLocation)
+$('nav').on('click', '.custom-btn', handleSections)
 
 // Initialize and add the map
 function initMap() {
@@ -114,7 +120,7 @@ function appendWeatherInfo(response) {
     $(`#weatherday${i}`).text(moment().add(i, "d").format("l"));
 
     $(`#weathericon${i}`).attr('src', `https://openweathermap.org/img/wn/${response.daily[i].weather[0].icon}@2x.png`);
-  
+
     $("<p>").text('Temp: ' + tempF.toFixed(2) + "°F").appendTo(weatherAppend).addClass('is-size-5');
 
   }
@@ -122,7 +128,13 @@ function appendWeatherInfo(response) {
 
 function handleNameAndDescription() {
 
+  // For the title on the tab of the browser
   $('title').text('Trail Chasers: ' + hikeSelected.name)
+
+  // For the modal.
+  $("#hike-modal").text(hikeSelected.name)
+
+  // For the Hike Info Tab
   $('#hikeImage').attr('src', hikeSelected.imgMedium)
   $("#hikeName").text(hikeSelected.name)
   $("#difficulty").text('Difficulty: ' + hikeSelected.difficulty).css('textTransform', 'capitalize')
@@ -130,4 +142,55 @@ function handleNameAndDescription() {
 
 }
 
+function handleSections(event) {
+  event.preventDefault();
 
+  if ($(this).data('section') == 'info') {
+    // $aboutMeEl.addClass('trans')
+    // $projectsEl.addClass('trans')
+    // setTimeout(() => {
+    $weatherEl.addClass('hide')
+    $mapEl.addClass('hide')
+    $directionsEl.addClass('hide')
+    $infoEl.removeClass('hide')
+    // }, 1000)
+    // setTimeout(() => $homeEl.removeClass('trans'), 1050)
+  }
+
+  if ($(this).data('section') == 'weather') {
+    // $aboutMeEl.addClass('trans')
+    // $projectsEl.addClass('trans')
+    // setTimeout(() => {
+    $infoEl.addClass('hide')
+    $mapEl.addClass('hide')
+    $directionsEl.addClass('hide')
+    $weatherEl.removeClass('hide')
+    // }, 1000)
+    // setTimeout(() => $homeEl.removeClass('trans'), 1050)
+  }
+
+  if ($(this).data('section') == 'map') {
+    // $aboutMeEl.addClass('trans')
+    // $projectsEl.addClass('trans')
+    // setTimeout(() => {
+    $infoEl.addClass('hide')
+    $weatherEl.addClass('hide')
+    $directionsEl.addClass('hide')
+    $mapEl.removeClass('hide')
+    // }, 1000)
+    // setTimeout(() => $homeEl.removeClass('trans'), 1050)
+  }
+
+  if ($(this).data('section') == 'directions') {
+    // $aboutMeEl.addClass('trans')
+    // $projectsEl.addClass('trans')
+    // setTimeout(() => {
+    $infoEl.addClass('hide')
+    $weatherEl.addClass('hide')
+    $mapEl.addClass('hide')
+    $directionsEl.removeClass('hide')
+    // }, 1000)
+    // setTimeout(() => $homeEl.removeClass('trans'), 1050)
+  }
+
+};
