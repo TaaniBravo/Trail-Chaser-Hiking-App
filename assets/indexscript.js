@@ -115,23 +115,23 @@ function handleResults(response) {
       break;
     }
     // create a card with info
-    var card = `<div class="card" id="${i}">
-                        <div class="card-content">
-                            <div class="media">
-                                <div class="media-left">
-                                    <figure class="image is-48x48">
-                                    <img src="${response.trails[i].imgSqSmall}" alt="Placeholder image">
-                                    </figure>
-                                </div>
-                                <div class="media-content">
-                                    <p class="is-size-4">${response.trails[i].name}</p>
-                                    <p>${response.trails[i].stars}<i class="fas fa-star"></i></p>
-                                    <p>Location: ${response.trails[i].location}</p> 
-                                    <p class="index-difficulty">Difficulty: <span class="${difficultyClass}">${difficultyText}</span></p>
-                                </div> 
-                            </div> 
-                        </div> 
-                    </div>`;
+    var card = `    
+    <div class="card" id="${i}">
+      <div class="card-body">
+          <div class="media">
+                  <figure class="figure-img img-fluid is-48x48 mr-3">
+                  <img src="${response.trails[i].imgSqSmall}" alt="Trail image">
+                  </figure>
+              <div class="media-body">
+                  <h5 class="mt-0">${response.trails[i].name}</h5>
+                  ${response.trails[i].stars}<i class="fas fa-star"></i><br>
+                  Location: ${response.trails[i].location}<br>
+                  <span class="index-difficulty">Difficulty: <span class="${difficultyClass}">${difficultyText}</span></span>
+              </div> 
+          </div> 
+      </div> 
+    </div>`;
+    
     resultsEl.append(card);
     $(".index-difficulty").css("textTransform", "capitalize");
   }
