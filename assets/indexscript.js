@@ -83,7 +83,15 @@ function handleSearch() {
 // handleResults - display results of first 5 results in card form
 function handleResults(response) {
   hikesReturned = response.trails; // store for use when user clicks selection
+  console.log(response.trails); // returns 10 trails
   resultsEl.empty(); // clearresults section
+
+  if (response.trails.length > 5) {
+    // create next button
+    let nextBtn = `<button type="button" class="btn btn-primary" id="next">Next Results &raquo;</button>`;  
+    resultsEl.append(nextBtn);
+  }
+
   for (var i = 0; i < 5; i++) {
     // get difficulty and assign color class
     var difficultyText;
