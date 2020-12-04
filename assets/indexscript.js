@@ -39,9 +39,10 @@ function handleUserInfo() {
 
     // IF the user doesnt input a city/location name
     if (locationInput === ""){
-        $("#location").val("Please enter a valid City Name!");
+        // $("#location").val("Please enter a valid City Name!");
         $("#results").empty();
-
+        // modal for input error messages
+        $('#inputModal').modal('show')
         //return; 
     }
     
@@ -161,7 +162,8 @@ function handleCity() {
       handleSearch();
     } else if (response.status == "ZERO_RESULTS") {
       $("#results").empty();
-      $("#location").val("Please enter a valid City Name!");
+      $('#inputModal').modal('show')
+      // $("#location").val("Please enter a valid City Name!");
     }
   });
 }
