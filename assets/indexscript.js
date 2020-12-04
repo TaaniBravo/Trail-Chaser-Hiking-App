@@ -85,15 +85,26 @@ function handleSearch() {
 function handleResults(response) {
   hikesReturned = response.trails; // store for use when user clicks selection
   console.log(response.trails); // returns 10 trails
-  resultsEl.empty(); // clearresults section
+  resultsEl.empty(); // clear results section
 
-  if (response.trails.length > 5) {
-    // create next button
+  let numResults = response.trails.length; // if there are results, there will always be at least one
+  let loopIndexMax = 5;
+  // to do - figure out how to treat less than 5 results
+  // to do - loop through up to 20 results
+
+  if (numResults >= 5) {   // create next button if more than 5 results
     let nextBtn = `<button type="button" class="btn btn-primary" id="next">Next Results &raquo;</button>`;  
     resultsEl.append(nextBtn);
+    loopIndexMax = 5;
+  } else if (numResults > 0) {
+    loopIndexMax = numResults;
+  } else { //no results
+    $('#inputModal').modal('show');
+    loopIndexMax = 0;
   }
 
-  for (var i = 0; i < 5; i++) {
+
+  for (var i = 0; i < loopIndexMax; i++) {
     // get difficulty and assign color class
     var difficultyText;
     var difficultyClass;
