@@ -15,6 +15,7 @@ var lon;
 var savedCriteria = JSON.parse(localStorage.getItem("savedCriteria")) || [];
 
 function init() {
+  // show saved criteria if stored
   if (savedCriteria != []) {
     $("#location").val(savedCriteria.location);
     $("#length").val(savedCriteria.length);
@@ -22,6 +23,7 @@ function init() {
     $("#ratingInput").val(savedCriteria.ratingInput);
   }
 }
+
 // handleUserInfo - get user inputs
 function handleUserInfo() {
     
@@ -30,7 +32,6 @@ function handleUserInfo() {
     radiusInput = $("#radius").val();
     lengthInput = $("#length").val();
     starInput = $("#ratingInput").val();
-
     let checkSaveCriteria = document.getElementById('checkboxChecker').checked;
 
     // make ajax call
@@ -39,7 +40,6 @@ function handleUserInfo() {
 
     // IF the user doesnt input a city/location name
     if (locationInput === ""){
-        // $("#location").val("Please enter a valid City Name!");
         $("#results").empty();
         // modal for input error messages
         $('#inputModal').modal('show')
@@ -85,30 +85,40 @@ function handleSearch() {
 function handleResults(response) {
   hikesReturned = response.trails; // store for use when user clicks selection
   console.log(response.trails); // returns 10 trails
-  resultsEl.empty(); // clear results section
+  // resultsEl.empty(); // clear results section
 
   let numResults = response.trails.length; // if there are results, there will always be at least one
-  let loopIndexMax = 5;
+  let numPages = Math.ceil(numResults/5); // 5 results per page
+  console.log(numPages);
+  
+  let startIndex = 0;
+  let loopIndexMax;
   // to do - figure out how to treat less than 5 results
   // to do - loop through up to 20 results
 
-  if (numResults >= 5) {   // create next button if more than 5 results
+  if (numResults === 0){
+    $('#inputModal').modal('show');
+    loopIndexMax = 0; // prevent loop from starting
+  } else if(numResults > 0 && numResults <6) {
+    loopIndexMax = numResults;
+  } else { // more than 5 results so more than 1 page of results
     let nextBtn = `<button type="button" class="btn btn-primary" id="next">Next Results &raquo;</button>`;  
     resultsEl.append(nextBtn);
     loopIndexMax = 5;
-  } else if (numResults > 0) {
-    loopIndexMax = numResults;
-  } else { //no results
-    $('#inputModal').modal('show');
-    loopIndexMax = 0;
   }
 
+  displayResults(startIndex, loopIndexMax);
 
-  for (var i = 0; i < loopIndexMax; i++) {
+}
+
+// display 5 result hikes per page
+function displayResults(startIndex, loopIndexMax) {
+
+  for (let i = startIndex; i < loopIndexMax; i++) {
     // get difficulty and assign color class
     var difficultyText;
     var difficultyClass;
-    switch (response.trails[i].difficulty.trim()){
+    switch (hikesReturned[i].difficulty.trim()){
       case("blackBlack"):
       difficultyText = "Very Difficult";
       difficultyClass = "dBlack";
@@ -140,12 +150,12 @@ function handleResults(response) {
       <div class="card-body">
           <div class="media">
                   <figure class="figure-img img-fluid is-48x48 mr-3">
-                  <img src="${response.trails[i].imgSqSmall}" alt="Trail image">
+                  <img src="${hikesReturned[i].imgSqSmall}" alt="Trail image">
                   </figure>
               <div class="media-body">
-                  <h5 class="mt-0">${response.trails[i].name}</h5>
-                  ${response.trails[i].stars}<i class="fas fa-star"></i><br>
-                  Location: ${response.trails[i].location}<br>
+                  <h5 class="mt-0">${hikesReturned[i].name}</h5>
+                  ${hikesReturned[i].stars}<i class="fas fa-star"></i><br>
+                  Location: ${hikesReturned[i].location}<br>
                   <span class="index-difficulty">Difficulty: <span class="${difficultyClass}">${difficultyText}</span></span>
               </div> 
           </div> 
@@ -158,8 +168,7 @@ function handleResults(response) {
 }
 
 function handleCity() {
-    const googleAPI = "AIzaSyBhOGyxS_RiEneLIpqf6mUUIL2HI2sEms4";
-    
+  const googleAPI = "AIzaSyBhOGyxS_RiEneLIpqf6mUUIL2HI2sEms4";
   // First we need to turn the geolocation of the user into a valid address for Google to use.
   const geocodeURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${locationInput}&key=${googleAPI}`;
 
@@ -174,10 +183,13 @@ function handleCity() {
     } else if (response.status == "ZERO_RESULTS") {
       $("#results").empty();
       $('#inputModal').modal('show')
-      // $("#location").val("Please enter a valid City Name!");
     }
   });
 }
+
+init();
+
+$("#findBtn").on("click", handleUserInfo);
 
 // listen for hike result to be clicked on
 $("#results").on("click", ".card", function () {
@@ -186,6 +198,12 @@ $("#results").on("click", ".card", function () {
   window.location.href = "results.html";
 });
 
-init();
+// TO DO - Listen for next button
+$('#results').on("click", "#next", function () {
+  console.log("next results please");
+  // TO DO - how to get dynamic indexes?
+  resultsEl.empty(); // clear results section
+  displayResults(5, 10);
+})
 
-$("#findBtn").on("click", handleUserInfo);
+// TO DO  - Listen for previous button
