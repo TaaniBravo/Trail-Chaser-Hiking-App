@@ -3,6 +3,7 @@
 var apiID = "200970639-981a2550ac3c48f2579397ecf3a9b65e";
 var queryURL;
 var resultsEl = $("#results");
+var formEl = $("#form-group");
 var hikesReturned;
 var userHikeSelected;
 var locationInput;
@@ -24,9 +25,11 @@ function init() {
   }
 }
 
-// handleUserInfo - get user inputs
+// handleUserInfo - get user inputs after user clicks Find Your Search
 function handleUserInfo() {
-    
+    // clear results section for each new search
+    resultsEl.empty(); // clear results section
+
     // get inputs
     locationInput = $("#location").val();
     radiusInput = $("#radius").val();
@@ -84,7 +87,7 @@ function handleSearch() {
 // handleResults - display results of first 5 results in card form
 function handleResults(response) {
   hikesReturned = response.trails; // store for use when user clicks selection
-  console.log(response.trails); // returns 10 trails
+  console.log(response.trails); // returns 10 trails max with current query
   // resultsEl.empty(); // clear results section
 
   let numResults = response.trails.length; // if there are results, there will always be at least one
@@ -100,8 +103,15 @@ function handleResults(response) {
     $('#inputModal').modal('show');
     loopIndexMax = 0; // prevent loop from starting
   } else if(numResults > 0 && numResults <6) {
+    // formEl.empty();
+    // let searchAgainBtn = `<button type="button" class="btn btn-primary" id="again">New Search</button>`;  
+    // resultsEl.append(searchAgainBtn);
     loopIndexMax = numResults;
   } else { // more than 5 results so more than 1 page of results
+    // formEl.empty();
+    resultsEl.empty(); // clear results section
+    // let searchAgainBtn = `<button type="button" class="btn btn-primary" id="again">New Search</button>`;  
+    // resultsEl.append(searchAgainBtn);
     let nextBtn = `<button type="button" class="btn btn-primary" id="next">Next Results &raquo;</button>`;  
     resultsEl.append(nextBtn);
     loopIndexMax = 5;
@@ -189,6 +199,7 @@ function handleCity() {
 
 init();
 
+// user clicks "find your trails", search for hikes based on user inputs
 $("#findBtn").on("click", handleUserInfo);
 
 // listen for hike result to be clicked on
@@ -198,12 +209,22 @@ $("#results").on("click", ".card", function () {
   window.location.href = "results.html";
 });
 
-// TO DO - Listen for next button
+// listen for next button to show next page of results
 $('#results').on("click", "#next", function () {
-  console.log("next results please");
+  // console.log("next results please");
   // TO DO - how to get dynamic indexes?
   resultsEl.empty(); // clear results section
   displayResults(5, 10);
 })
 
 // TO DO  - Listen for previous button
+// $('#results').on("click", "#next", function () {
+  // console.log("prior results please");
+  // displayResults(1,5);
+// })
+
+// listen for search again to be clicked
+// $('#results').on("click", "#searchAgain", function() {
+//   resultsEl.empty();
+//   init();
+// })
