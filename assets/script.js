@@ -1,18 +1,20 @@
 // Global Variables
-const hikeSelected = JSON.parse(localStorage.getItem('hikeSelected'))
-const date = moment()
+const hikeSelected = JSON.parse(localStorage.getItem("hikeSelected"));
+const date = moment();
 
 // Upon document being READY launches these functions.
-$(document).ready(handleWeatherInfo)
-$(document).ready(handleNameAndDescription)
+$(document).ready(handleWeatherInfo);
+$(document).ready(handleNameAndDescription);
 // This button events apply to the modal and what happens when each of the buttons are clicked.
-$('#closeBtn').on('click', handleGeoLocation)
+$("#closeBtn").on("click", handleGeoLocation);
 
 // Initialize and add the map
 function initMap() {
-
   // The location of hikeLocation
-  const hikeLocation = { lat: hikeSelected.latitude, lng: hikeSelected.longitude };
+  const hikeLocation = {
+    lat: hikeSelected.latitude,
+    lng: hikeSelected.longitude,
+  };
   // The map, centered at hikeLocation
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 8,
@@ -24,44 +26,44 @@ function initMap() {
     position: hikeLocation,
     map: map,
   });
-
 }
 
 function handleGeoLocation() {
   // On btn click the modal closes.
-  $('.modal').removeClass('is-active')
+  $(".modal").removeClass("is-active");
   // THEN we pull the geo location
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(handleUserAddress)
-  }
-  else {
+    navigator.geolocation.getCurrentPosition(handleUserAddress);
+  } else {
     return;
   }
 }
 
 function handleUserAddress(position) {
-  const googleAPI = 'AIzaSyBhOGyxS_RiEneLIpqf6mUUIL2HI2sEms4'
+  const googleAPI = "AIzaSyDGwKSGmGvgOL9oxOeskf9m1tQa4ors3I4";
 
   // LET these variables be equal to the user's latitude and longitude
-  let userLatitude = position.coords.latitude
-  let userLongitude = position.coords.longitude
+  let userLatitude = position.coords.latitude;
+  let userLongitude = position.coords.longitude;
 
   // First we need to turn the geolocation of the user into a valid address for Google to use.
-  const reverseGeoURL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${userLatitude},${userLongitude}&key=${googleAPI}`
+  const reverseGeoURL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${userLatitude},${userLongitude}&key=${googleAPI}`;
 
   $.ajax({
     url: reverseGeoURL,
-    method: 'GET'
+    method: "GET",
   }).then(function (response) {
-    let userAddress = response.results[0].formatted_address
-    calcRoute(userAddress)
-  })
+    let userAddress = response.results[0].formatted_address;
+    calcRoute(userAddress);
+  });
 }
 
 function calcRoute(userAddress) {
-
   // LET the destination be EQUAL to this new Latitude and Longitude.
-  let destination = new google.maps.LatLng(hikeSelected.latitude, hikeSelected.longitude);
+  let destination = new google.maps.LatLng(
+    hikeSelected.latitude,
+    hikeSelected.longitude
+  );
   // Variables that will create new directions and renderer them to the map for us.
   let directionsService = new google.maps.DirectionsService();
   let directionsRenderer = new google.maps.DirectionsRenderer();
@@ -75,13 +77,12 @@ function calcRoute(userAddress) {
   let request = {
     origin: userAddress,
     destination: destination,
-    travelMode: "DRIVING"
-  }
+    travelMode: "DRIVING",
+  };
 
   directionsService.route(request, function (result, status) {
-
-    if (status == 'OK') {
-      directionsRenderer.setMap(map)
+    if (status == "OK") {
+      directionsRenderer.setMap(map);
       directionsRenderer.setDirections(result);
       directionsRenderer.setPanel(document.getElementById("bottom-panel"));
     }
@@ -89,45 +90,51 @@ function calcRoute(userAddress) {
 }
 
 function handleWeatherInfo() {
+  var APIKey = "52aa85fe9180c06fe869a1a3e7d7de19";
+  var lat = hikeSelected.latitude;
+  var long = hikeSelected.longitude;
 
-  var APIKey = "52aa85fe9180c06fe869a1a3e7d7de19"
-  var lat = hikeSelected.latitude
-  var long = hikeSelected.longitude
-
-  var queryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&appid=" + APIKey;
+  var queryURL =
+    "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+    lat +
+    "&lon=" +
+    long +
+    "&appid=" +
+    APIKey;
 
   $.ajax({
     url: queryURL,
-    method: "GET"
+    method: "GET",
   }).then(function (response) {
-    appendWeatherInfo(response)
-  })
+    appendWeatherInfo(response);
+  });
 }
 
 function appendWeatherInfo(response) {
-
   for (let i = 0; i <= 7; i++) {
-
     var weatherAppend = $(`#weatherinfo${i}`);
-    var tempF = (response.daily[i].temp.day - 273.15) * 1.80 + 32
+    var tempF = (response.daily[i].temp.day - 273.15) * 1.8 + 32;
 
     $(`#weatherday${i}`).text(moment().add(i, "d").format("l"));
 
-    $(`#weathericon${i}`).attr('src', `https://openweathermap.org/img/wn/${response.daily[i].weather[0].icon}@2x.png`);
-  
-    $("<p>").text('Temp: ' + tempF.toFixed(2) + "°F").appendTo(weatherAppend).addClass('is-size-5');
+    $(`#weathericon${i}`).attr(
+      "src",
+      `https://openweathermap.org/img/wn/${response.daily[i].weather[0].icon}@2x.png`
+    );
 
+    $("<p>")
+      .text("Temp: " + tempF.toFixed(2) + "°F")
+      .appendTo(weatherAppend)
+      .addClass("is-size-5");
   }
 }
 
 function handleNameAndDescription() {
-
-  $('title').text('Trail Chasers: ' + hikeSelected.name)
-  $('#hikeImage').attr('src', hikeSelected.imgMedium)
-  $("#hikeName").text(hikeSelected.name)
-  $("#difficulty").text('Difficulty: ' + hikeSelected.difficulty).css('textTransform', 'capitalize')
-  $("#description").text(hikeSelected.summary)
-
+  $("title").text("Trail Chasers: " + hikeSelected.name);
+  $("#hikeImage").attr("src", hikeSelected.imgMedium);
+  $("#hikeName").text(hikeSelected.name);
+  $("#difficulty")
+    .text("Difficulty: " + hikeSelected.difficulty)
+    .css("textTransform", "capitalize");
+  $("#description").text(hikeSelected.summary);
 }
-
-

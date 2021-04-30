@@ -24,46 +24,39 @@ function init() {
 }
 // handleUserInfo - get user inputs
 function handleUserInfo() {
-    
-    // get inputs
-    locationInput = $("#location").val();
-    radiusInput = $("#radius").val();
-    lengthInput = $("#length").val();
-    starInput = $("#ratingInput").val();
+  // get inputs
+  locationInput = $("#location").val();
+  radiusInput = $("#radius").val();
+  lengthInput = $("#length").val();
+  starInput = $("#ratingInput").val();
 
-    let checkSaveCriteria = document.getElementById('checkboxChecker').checked;
+  let checkSaveCriteria = document.getElementById("checkboxChecker").checked;
 
-    // make ajax call
-    handleCity();
-    // handleSearch();
+  // make ajax call
+  handleCity();
+  // handleSearch();
 
-    // IF the user doesnt input a city/location name
-    if (locationInput === ""){
-        $("#location").val("Please enter a valid City Name!");
-        $("#results").empty();
+  // IF the user doesnt input a city/location name
+  if (locationInput === "") {
+    $("#location").val("Please enter a valid City Name!");
+    $("#results").empty();
 
-        //return; 
-    }
-    
-    else if (checkSaveCriteria === true) {
-        
-        var userData = {
-            location: locationInput, 
-            radius: radiusInput, 
-            length: lengthInput, 
-            ratingInput: starInput
-        };
-
-        //savedCriteria.push(userData)
-
-        localStorage.setItem("savedCriteria", JSON.stringify(userData));
-        //function that appends info into form
-        
-    }
-    else {
-        localStorage.clear("savedCriteria");
+    //return;
+  } else if (checkSaveCriteria === true) {
+    var userData = {
+      location: locationInput,
+      radius: radiusInput,
+      length: lengthInput,
+      ratingInput: starInput,
     };
 
+    //savedCriteria.push(userData)
+
+    localStorage.setItem("savedCriteria", JSON.stringify(userData));
+    //function that appends info into form
+  } else {
+    localStorage.clear("savedCriteria");
+  }
 }
 
 // handleSearch - make ajax call and get response info for hikes to appear
@@ -76,6 +69,7 @@ function handleSearch() {
   })
     // After the data from the AJAX request comes back
     .then(function (response) {
+      console.log(response);
       handleResults(response);
     });
 }
@@ -88,31 +82,31 @@ function handleResults(response) {
     // get difficulty and assign color class
     var difficultyText;
     var difficultyClass;
-    switch (response.trails[i].difficulty.trim()){
-      case("blackBlack"):
-      difficultyText = "Very Difficult";
-      difficultyClass = "dBlack";
-      break;
-      case("black"):
-      difficultyText = "Difficult";
-      difficultyClass = "dBlack";
-      break;
-      case("blueBlack"):
-      difficultyText = "Intermediate/Difficult";
-      difficultyClass = "dBlueBlack";
-      break;
-      case("blue"):
-      difficultyText = "Intermediate";
-      difficultyClass = "dBlue";
-      break;
-      case("greenBlue"):
-      difficultyText = "Easy/Intermediate";
-      difficultyClass = "dGreen";
-      break;
-      case("green"):
-      difficultyText = "Easy";
-      difficultyClass = "dGreen";
-      break;
+    switch (response.trails[i].difficulty.trim()) {
+      case "blackBlack":
+        difficultyText = "Very Difficult";
+        difficultyClass = "dBlack";
+        break;
+      case "black":
+        difficultyText = "Difficult";
+        difficultyClass = "dBlack";
+        break;
+      case "blueBlack":
+        difficultyText = "Intermediate/Difficult";
+        difficultyClass = "dBlueBlack";
+        break;
+      case "blue":
+        difficultyText = "Intermediate";
+        difficultyClass = "dBlue";
+        break;
+      case "greenBlue":
+        difficultyText = "Easy/Intermediate";
+        difficultyClass = "dGreen";
+        break;
+      case "green":
+        difficultyText = "Easy";
+        difficultyClass = "dGreen";
+        break;
     }
     // create a card with info
     var card = `<div class="card" id="${i}">
@@ -138,8 +132,9 @@ function handleResults(response) {
 }
 
 function handleCity() {
-    const googleAPI = "AIzaSyBhOGyxS_RiEneLIpqf6mUUIL2HI2sEms4";
-    
+  // api key updated 4/30/2021
+  const googleAPI = "AIzaSyDGwKSGmGvgOL9oxOeskf9m1tQa4ors3I4";
+
   // First we need to turn the geolocation of the user into a valid address for Google to use.
   const geocodeURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${locationInput}&key=${googleAPI}`;
 
