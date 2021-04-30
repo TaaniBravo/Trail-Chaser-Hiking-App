@@ -40,6 +40,7 @@ function handleGeoLocation() {
 }
 
 function handleUserAddress(position) {
+  // api key updated 4/30/2021
   const googleAPI = "AIzaSyDGwKSGmGvgOL9oxOeskf9m1tQa4ors3I4";
 
   // LET these variables be equal to the user's latitude and longitude
